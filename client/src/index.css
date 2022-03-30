@@ -1,0 +1,39 @@
+/* Birds-Information - Body */
+.bg {
+  background-color: black;
+}
+.App {
+  margin-top: 100px;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+body {
+  /* background-image: url("./images/bg1.jpg"); */
+  background-color: #dddddd;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.birdlist {
+  width: 90vw;
+  margin: 3rem auto;
+  display: grid;
+  gap: 1.5rem;
+}
+@media screen and (min-width: 1500px) {
+  .birdlist {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bird h4 {
+  color: #617d98;
+}
+
+/*End of Birds Inforamtion - Body */
