@@ -28,6 +28,10 @@ router.post('/', async (req, res) => {
   }
 })
 
+router.get('/me', (req, res) => {
+})
+
+
 const validate = (data) => {
   const schema = Joi.object({
     email: Joi.string().email().required().label('Email'),

@@ -14,8 +14,10 @@ import SignUp from './dashboard/signUp'
 
 function App() {
   const user = localStorage.getItem('token')
+  console.log(user)
+
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid ' style={{position: 'relative,', minHeight: '100%'}}>
       <Router>
         <Navbar data={user} />
         <Routes>
@@ -46,8 +48,8 @@ function App() {
           <Route exact path='/adminDashboard/addBirds' element={<AddBird />} />
         </Routes>
       </Router>
-      <div className='container-fluid bg-dark navbar-nav-scroll text-white fixed-bottom'>
-        <footer className='py-2'>
+      <div className='container-fluid bg-dark navbar-nav-scroll stick-bottom text-white' >
+        <footer className='py-2  align-items-end'>
           <ul className='nav  justify-content-center border-bottom '>
             <li className='nav-item'>
               <a href='/' className='nav-link px-3 text-white '>

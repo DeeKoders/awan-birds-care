@@ -6,9 +6,9 @@ const Donations = () => {
   return (
     <div
       className='container-fluid mt-5'
-      Style={'height:80vh;padding-top:15vh'}
+      Style={''}
     >
-      <div className='row  justify-content-evenly text-center mt-5 '>
+      <div className='row  justify-content-evenly text-center mt-5  mb-5'>
         <div className='col-md-3 col-sm-auto py-5'>
           <div className='card py-5 mx-4'>
             <div className='card-body'>
