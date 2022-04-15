@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import React from 'react'
 import '../../index.css'
 import useApi from '../../hooks/useApi'
 import Loading from '../../loading'

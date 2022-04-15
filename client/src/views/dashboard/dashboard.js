@@ -1,5 +1,6 @@
 import { PlusCircleIcon, LogIcon } from '@primer/octicons-react'
 import { Link } from 'react-router-dom'
+import React from 'react'
 
 const Dashboard = () => {
   return (
