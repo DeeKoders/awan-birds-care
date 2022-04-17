@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 const Home = () => {
   let navigate = useNavigate()
   return (
-    <div className='container-fluid col px-0 py-1'>
+    <div className='container col px-0'>
       <div
         id='carouselExampleCaptions'
         className='carousel slide carousel-fade row'

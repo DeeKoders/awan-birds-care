@@ -8,6 +8,7 @@ const multer = require('multer')
 const path = require('path')
 const userRoutes = require('./routes/user')
 const authRoutes = require('./routes/auth')
+// const deleteRoutes = require('./routes/delete')
 const { v4: uuid } = require('uuid')
 
 const bodyParser = require('body-parser')
@@ -21,6 +22,13 @@ app.use(express.static(__dirname + '/public'))
 //routes
 app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
+// app.use('/api/delete', deleteRoutes)
+
+app.delete('/delete/:id', async (req, res) => {
+  const id = req.params.id
+  await BirdsModel.findByIdAndRemove(id).exec()
+  res.send('Item Deleted !!')
+})
 
 //Storage
 const storage = multer.diskStorage({

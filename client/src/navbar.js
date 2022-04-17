@@ -1,18 +1,19 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { PeopleIcon } from '@primer/octicons-react'
+
 import './index.css'
 const Navbar = (props) => {
   let navigate = useNavigate()
   return (
     <div>
-      <nav className='navbar navbar-scroll navbar-expand-lg navbar-dark bg-dark'>
-        <div className='container-fluid'>
-          <a className='navbar-brand' href='/'>
+      <nav className='navbar navbar-scroll navbar-expand-lg navbar-light  text-uppercase '>
+        <div className='text-dark container'>
+          <a className='col text-dark fs-4 fw-bold navbar-brand' href='/'>
             Awan Birds Care
           </a>
           <button
-            className='navbar-toggler'
+            class='navbar-toggler'
             type='button'
             data-bs-toggle='collapse'
             data-bs-target='#navbarSupportedContent'
@@ -20,12 +21,14 @@ const Navbar = (props) => {
             aria-expanded='false'
             aria-label='Toggle navigation'
           >
-            <span className='navbar-toggler-icon'></span>
+            <span class='navbar-toggler-icon'></span>
           </button>
-          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <div className='text-white'></div>
+          <div
+            className=' collapse navbar-collapse'
+            id='navbarSupportedContent'
+          >
             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
-              <li className='nav-item'>
+              <li className='nav-item '>
                 <Link className='nav-link' aria-current='page' to='/'>
                   Home
                 </Link>
@@ -61,7 +64,7 @@ const Navbar = (props) => {
               />
 
               <button
-                className='btn btn-outline-light mx-2'
+                className='btn btn-dark mx-2'
                 type='submit'
                 onClick={() => {
                   var myText = document.getElementById('sear').value
@@ -73,7 +76,7 @@ const Navbar = (props) => {
               {props.data !== 'null' ? (
                 <div className='d-flex'>
                   <button
-                    className='btn btn-outline-light mx-2'
+                    className='btn btn-dark mx-2'
                     type='submit'
                     onClick={() => {
                       navigate('/adminDashboard')
@@ -82,7 +85,7 @@ const Navbar = (props) => {
                     Portal
                   </button>
                   <button
-                    className='btn btn-outline-light mx-2'
+                    className='btn btn-dark mx-2'
                     type='submit'
                     onClick={() => {
                       localStorage.setItem('token', null)

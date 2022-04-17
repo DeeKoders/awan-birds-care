@@ -11,15 +11,17 @@ import Dashboard from './dashboard/dashboard'
 import Login from './dashboard/login'
 import AddBird from './dashboard/addBird'
 import SignUp from './dashboard/signUp'
+import RemoveBird from './dashboard/removeBird'
 
 function App() {
   const user = localStorage.getItem('token')
   console.log(user)
 
   return (
-    <div className='container-fluid ' style={{position: 'relative,', minHeight: '100%'}}>
+    <div className='container-fluid '>
       <Router>
         <Navbar data={user} />
+        <hr />
         <Routes>
           {user && (
             <Route exact path='/adminDashboard' element={<Dashboard />} />
@@ -40,16 +42,17 @@ function App() {
           />
           <Route exact path='/search/:myText' element={<Search />} />
           <Route exact path='/' element={<Home />} />
-
           {/* Routes
                 For
                   Dashboard */}
 
+          <Route exact path='/removeBirdInformation' element={<RemoveBird />} />
           <Route exact path='/adminDashboard/addBirds' element={<AddBird />} />
         </Routes>
       </Router>
-      <div className='container-fluid bg-dark navbar-nav-scroll stick-bottom text-white' >
-        <footer className='py-2  align-items-end'>
+
+      <footer className='fixed-bottom mt-auto bg-dark text-white'>
+        <div className='container-fluid'>
           <ul className='nav  justify-content-center border-bottom '>
             <li className='nav-item'>
               <a href='/' className='nav-link px-3 text-white '>
@@ -79,8 +82,8 @@ function App() {
           <p className='text-center text-white mt-2 mb-2'>
             Awan Birds Care © 2021 Company, Inc
           </p>
-        </footer>
-      </div>
+        </div>
+      </footer>
     </div>
   )
 }

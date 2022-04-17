@@ -2,6 +2,7 @@
 .bg {
   background-color: black;
 }
+
 .App {
   margin-top: 100px;
   /* text-align: center; */
@@ -11,9 +12,19 @@
   align-content: cener;
   justify-content: center;
   justify-items: center;
-
 }
 
+.crop {
+  width: 200px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.crop img {
+  width: 400px;
+  height: 400px;
+  margin: -25px 0 0 -100px;
+}
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -30,12 +41,12 @@ body {
   background-attachment: fixed;
 }
 .birdlist {
-  width: 90vw;
+  width: 80vw;
   margin: 3rem auto;
   display: grid;
   gap: 1.5rem;
 }
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 1200px) {
   .birdlist {
     grid-template-columns: repeat(3, 1fr);
   }
