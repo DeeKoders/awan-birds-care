@@ -22,6 +22,7 @@ const AddBird = () => {
     formData.append('birdSize', size)
     formData.append('imageBird', image)
     axios.post('http://localhost:3001/insert', formData).catch((err) => {})
+    window.location = '/adminDashboard/addBirds'
   }
 
   return (
