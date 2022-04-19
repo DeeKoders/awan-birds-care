@@ -42,9 +42,9 @@ body {
 }
 .birdlist {
   width: 80vw;
-  margin: 3rem auto;
+  margin: 2rem auto;
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 @media screen and (min-width: 1200px) {
   .birdlist {

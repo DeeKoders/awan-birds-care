@@ -103,7 +103,7 @@ const BirdsInformation = () => {
         </div>
       </div>
 
-      <div className='col-md-9 bg-opacity-100  py-3 px-4'>
+      <div className='col-md-10 col-xl-10  py-3'>
         <ol class='breadcrumb'>
           <li class='breadcrumb-item'>
             <a href='/'>Home</a>
@@ -115,8 +115,8 @@ const BirdsInformation = () => {
         <div>
           <h1 className='fs-2 fw-bold'>Birds Information</h1>
         </div>
-        <div>
-          <section className=' birdlist'>
+        <div className='container-fluid'>
+          <section className='d-flex row justify-content-center'>
             {birds.map((b) => {
               return <Bird key={b.id} {...b} />
             })}

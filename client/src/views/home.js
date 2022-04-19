@@ -1,5 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import h1 from '../images/h1.jpg'
+import h2 from '../images/h2.jpg'
+import h3 from '../images/h3.jpg'
 
 const Home = () => {
   let navigate = useNavigate()
@@ -35,11 +38,7 @@ const Home = () => {
         <i data-feather='circle'></i>
         <div className='carousel-inner'>
           <div className='carousel-item active'>
-            <img
-              src='https://firebasestorage.googleapis.com/v0/b/awanbirds-80258.appspot.com/o/images%2Fh3.jpg?alt=media&token=4b7849bb-7051-455a-9e1e-a93356784689'
-              className='d-block w-100'
-              alt='...'
-            />
+            <img src={h1} className='d-block w-100' alt='...' />
             <div className='carousel-caption d-none d-md-block'>
               <h2>Welcome to Awan Birds Care!!</h2>
               <p>Its time to become aware of Birds Care !!</p>
@@ -49,11 +48,7 @@ const Home = () => {
             </div>
           </div>
           <div className='carousel-item'>
-            <img
-              src='https://firebasestorage.googleapis.com/v0/b/awanbirds-80258.appspot.com/o/images%2Fh2.jpg?alt=media&token=99f36184-6532-4c48-92cf-f7e9412b96e9'
-              className='d-block w-100'
-              alt='...'
-            />
+            <img src={h2} className='d-block w-100' alt='...' />
             <div className='carousel-caption d-none d-md-block'>
               <h2>Welcome to Awan Birds Care!!</h2>
               <p>Its time to become aware of Birds Care !!</p>
@@ -63,11 +58,7 @@ const Home = () => {
             </div>
           </div>
           <div className='carousel-item'>
-            <img
-              src='https://firebasestorage.googleapis.com/v0/b/awanbirds-80258.appspot.com/o/images%2Fh1.jpg?alt=media&token=8a3a3b21-59d5-4710-a4ec-fced6b7aae6d'
-              className='d-block w-100'
-              alt='...'
-            />
+            <img src={h3} className='d-block w-100' alt='...' />
             <div className='carousel-caption d-none d-md-block'>
               <h2>Welcome to Awan Birds Care!!</h2>
               <p>Its time to become aware of Birds Care !!</p>
