@@ -12,6 +12,8 @@ import Login from './dashboard/login'
 import AddBird from './dashboard/addBird'
 import SignUp from './dashboard/signUp'
 import RemoveBird from './dashboard/removeBird'
+import AddSell from './dashboard/addsell'
+import Sell from './buySell/sell'
 
 function App() {
   const user = localStorage.getItem('token')
@@ -31,6 +33,7 @@ function App() {
             path='/BirdsInformation'
             element={<BirdsInformation />}
           />
+          <Route exact path='/BirdSell' element={<Sell />} />
           <Route exact path='/signUp' element={<SignUp />} />
           <Route exact path='/adminSignIn' element={<Login />} />
           <Route exact path='/Donations' element={<Donations />} />
@@ -48,10 +51,11 @@ function App() {
 
           <Route exact path='/removeBirdInformation' element={<RemoveBird />} />
           <Route exact path='/adminDashboard/addBirds' element={<AddBird />} />
+          <Route exact path='/adminDashboard/addSell' element={<AddSell />} />
         </Routes>
       </Router>
 
-      <footer className='fixed-bottom mt-auto bg-dark text-white'>
+      <footer className='mt-auto bg-dark text-white'>
         <div className='container-fluid'>
           <ul className='nav  justify-content-center border-bottom '>
             <li className='nav-item'>

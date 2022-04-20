@@ -4,6 +4,7 @@ const mongoose = require('mongoose') // import mongoose ORM(Object Relation Mode
 const cors = require('cors')
 const app = express() // Express Instance
 const BirdsModel = require('./models/abc')
+const SellModel = require('./models/sell')
 const multer = require('multer')
 const path = require('path')
 const userRoutes = require('./routes/user')
@@ -42,7 +43,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 //End of Storage
-
 const db =
   'mongodb+srv://DeeKoders:deekay0312@abc.i8xwk.mongodb.net/awan-birds-care?retryWrites=true&w=majority'
 
@@ -56,7 +56,40 @@ mongoose
   .catch((err) => {
     console.log(err)
   })
+//buy/sell Insert
+app.post('/insertForSell', upload.single('imageBird'), async (req, res) => {
+  const birdName = req.body.birdName
+  const age = req.body.birdAge
+  const details = req.body.birdDetails
+  const price = req.body.birdPrice
+  const image = req.file.filename
 
+  const bird = new SellModel({
+    birdName: birdName,
+    age: age,
+    price: price,
+    details: details,
+    image: image,
+  })
+  console.log('Ready to Save')
+  try {
+    await bird.save()
+  } catch (err) {
+    console.log(err)
+  }
+})
+//buy/sell read
+app.get('/readSell', async (req, res) => {
+  SellModel.find({}, (err, result) => {
+    if (err) {
+      res.send(err)
+    }
+
+    res.send(result)
+  })
+})
+
+//Birds Information Insert
 app.post('/insert', upload.single('imageBird'), async (req, res) => {
   const birdName = req.body.birdName
   const temp = req.body.birdTemp

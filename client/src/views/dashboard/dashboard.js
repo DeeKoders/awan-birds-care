@@ -33,7 +33,10 @@ const Dashboard = () => {
               </li>
               <hr />
               <li className='nav-item'>
-                <Link className='nav-link text-dark fw-bold' to='/'>
+                <Link
+                  className='nav-link text-dark fw-bold'
+                  to='/adminDashboard/addSell'
+                >
                   <PlusCircleIcon className='mx-2' size={20} />
                   Add Birds - Buy/Sell
                 </Link>
