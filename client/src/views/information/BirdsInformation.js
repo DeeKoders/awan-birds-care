@@ -3,17 +3,22 @@ import Bird from './Bird'
 import useApi from '../../hooks/useApi'
 import Loading from '../../loading'
 import importImg from '../../images/image_logo.png'
+import { useNavigate } from 'react-router-dom'
+import { PeopleIcon } from '@primer/octicons-react'
 const BirdsInformation = () => {
   const { data: birds, loading } = useApi('/read')
-
+  let navigate = useNavigate()
   if (loading) return <Loading />
   console.log(birds)
+
+  
 
   return (
     <div className='row container-fluid'>
       <div className='col-md-2'>
         <div className='px-4 py-2 border-1 rounded-top border border-dark'>
-          <h2 className='fs-4 pb-2 text-uppercase border-dark border-bottom fw-bold text-center'>
+        
+          <h2 className='fs-4 pb-2  border-dark border-bottom fw-bold text-center'>
             Result Filters
           </h2>
 
@@ -104,7 +109,8 @@ const BirdsInformation = () => {
       </div>
 
       <div className='col-md-10 col-xl-10  py-3'>
-        <ol class='breadcrumb'>
+        <div className='d-flex row justify-content-between'>
+        <ol class='breadcrumb col'>
           <li class='breadcrumb-item'>
             <a href='/'>Home</a>
           </li>
@@ -112,6 +118,31 @@ const BirdsInformation = () => {
             Birds Information
           </li>
         </ol>
+        <form className='d-flex col mb-5'>
+              <input
+                className='form-control me-2'
+                
+                type='search'
+                id='sear'
+                placeholder='Search'
+                aria-label='Search'
+              />
+
+              <button
+                className='btn btn-dark'
+                type='submit'
+                onClick={() => {
+                  var myText = document.getElementById('sear').value
+                  navigate('/search/' + myText)
+                }}
+              >
+                Search
+              </button>
+              
+            
+            </form>
+        </div>
+        
         <div>
           <h1 className='fs-2 fw-bold'>Birds Information</h1>
         </div>

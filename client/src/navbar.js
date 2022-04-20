@@ -27,7 +27,7 @@ const Navbar = (props) => {
             className=' collapse navbar-collapse'
             id='navbarSupportedContent'
           >
-            <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
+            <ul className='navbar-nav me-auto mb-2 mb-lg-0' >
               <li className='nav-item '>
                 <Link className='nav-link' aria-current='page' to='/'>
                   Home
@@ -55,24 +55,6 @@ const Navbar = (props) => {
               </li>
             </ul>
             <form className='d-flex'>
-              <input
-                className='form-control me-2'
-                type='search'
-                id='sear'
-                placeholder='Search'
-                aria-label='Search'
-              />
-
-              <button
-                className='btn btn-dark mx-2'
-                type='submit'
-                onClick={() => {
-                  var myText = document.getElementById('sear').value
-                  navigate('/search/' + myText)
-                }}
-              >
-                Search
-              </button>
               {props.data !== 'null' ? (
                 <div className='d-flex'>
                   <button
@@ -97,13 +79,13 @@ const Navbar = (props) => {
                 </div>
               ) : (
                 <button
-                  className='btn btn-outline-light mx-2'
+                  className='btn btn-outline-dark mx-2'
                   type='submit'
                   onClick={() => {
                     navigate('/adminSignIn')
                   }}
                 >
-                  <PeopleIcon fill='white' size='medium' />
+                  <PeopleIcon  size='medium' />
                 </button>
               )}
             </form>
