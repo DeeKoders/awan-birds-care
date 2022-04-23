@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom'
 import useApi from '../hooks/useApi'
 import Loading from '../loading'
 
-const Search = () => {
+const Search = (props) => {
   let { myText } = useParams()
-  const { data: birds, loading } = useApi('/read')
+  const { data: birds, loading } = useApi('/read/' + props.cat)
 
   if (loading) return <Loading />
 

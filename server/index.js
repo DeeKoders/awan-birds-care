@@ -113,8 +113,17 @@ app.post('/insert', upload.single('imageBird'), async (req, res) => {
   }
 })
 
-app.get('/read', async (req, res) => {
+app.get('/read/BirdsInformation', async (req, res) => {
   BirdsModel.find({}, (err, result) => {
+    if (err) {
+      res.send(err)
+    }
+
+    res.send(result)
+  })
+})
+app.get('/read/BuySell', async (req, res) => {
+  SellModel.find({}, (err, result) => {
     if (err) {
       res.send(err)
     }
@@ -129,6 +138,7 @@ app.get('/read/:id', async (req, res) => {
   console.log(bird)
   res.send(bird)
 })
+
 // Admin Portal
 
 app.get('/upload', (req, res) => {

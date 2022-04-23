@@ -3,16 +3,17 @@ import useApi from '../../hooks/useApi'
 import Loading from '../../loading'
 import importImg from '../../images/image_logo.png'
 import SellBird from './SellBird'
+import { useNavigate } from 'react-router-dom'
 const Sell = () => {
   const { data: birds, loading } = useApi('/readSell')
-
+  let navigate = useNavigate()
   if (loading) return <Loading />
   console.log(birds)
 
   return (
     <div className='row container-fluid'>
-      <div className='col-md-2'>
-        <div className='px-4 py-2 border-1 rounded-top border border-dark'>
+      <div className='col-md-2 bg-white border-1 rounded-top border border-dark'>
+        <div className='px-4 py-2 '>
           <h2 className='fs-4 pb-2 text-uppercase border-dark border-bottom fw-bold text-center'>
             Result Filters
           </h2>
@@ -104,14 +105,36 @@ const Sell = () => {
       </div>
 
       <div className='col-md-10 col-xl-10  py-3'>
-        <ol class='breadcrumb'>
-          <li class='breadcrumb-item'>
-            <a href='/'>Home</a>
-          </li>
-          <li class='breadcrumb-item active' aria-current='page'>
-            Buy/Sell
-          </li>
-        </ol>
+        <div className='row justify-content-between'>
+          <ol class='breadcrumb col-4 px-3'>
+            <li class='breadcrumb-item'>
+              <a href='/'>Home</a>
+            </li>
+            <li class='breadcrumb-item active' aria-current='page'>
+              Buy/Sell
+            </li>
+          </ol>
+          <form className='d-flex col-4 mb-5'>
+            <input
+              className='form-control me-2 '
+              type='search'
+              id='sear'
+              placeholder='Search'
+              aria-label='Search'
+            />
+
+            <button
+              className='btn btn-dark'
+              type='submit'
+              onClick={() => {
+                var myText = document.getElementById('sear').value
+                navigate('/search/BuySell/' + myText)
+              }}
+            >
+              Search
+            </button>
+          </form>
+        </div>
         <div>
           <h1 className='fs-2 fw-bold'>Buy & Sell</h1>
         </div>

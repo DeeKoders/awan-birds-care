@@ -6,18 +6,15 @@ import importImg from '../../images/image_logo.png'
 import { useNavigate } from 'react-router-dom'
 import { PeopleIcon } from '@primer/octicons-react'
 const BirdsInformation = () => {
-  const { data: birds, loading } = useApi('/read')
+  const { data: birds, loading } = useApi('/read/BirdsInformation')
   let navigate = useNavigate()
   if (loading) return <Loading />
   console.log(birds)
 
-  
-
   return (
     <div className='row container-fluid'>
-      <div className='col-md-2'>
-        <div className='px-4 py-2 border-1 rounded-top border border-dark'>
-        
+      <div className='col-md-2 px-0 bg-white border-1 rounded-top border border-dark'>
+        <div className='px-4 py-2 '>
           <h2 className='fs-4 pb-2  border-dark border-bottom fw-bold text-center'>
             Result Filters
           </h2>
@@ -109,40 +106,37 @@ const BirdsInformation = () => {
       </div>
 
       <div className='col-md-10 col-xl-10  py-3'>
-        <div className='d-flex row justify-content-between'>
-        <ol class='breadcrumb col'>
-          <li class='breadcrumb-item'>
-            <a href='/'>Home</a>
-          </li>
-          <li class='breadcrumb-item active' aria-current='page'>
-            Birds Information
-          </li>
-        </ol>
-        <form className='d-flex col mb-5'>
-              <input
-                className='form-control me-2'
-                
-                type='search'
-                id='sear'
-                placeholder='Search'
-                aria-label='Search'
-              />
+        <div className='row justify-content-between'>
+          <ol class='breadcrumb col-4 px-3'>
+            <li class='breadcrumb-item'>
+              <a href='/'>Home</a>
+            </li>
+            <li class='breadcrumb-item active' aria-current='page'>
+              Birds Information
+            </li>
+          </ol>
+          <form className='d-flex col-4 mb-5'>
+            <input
+              className='form-control me-2'
+              type='search'
+              id='sear'
+              placeholder='Search'
+              aria-label='Search'
+            />
 
-              <button
-                className='btn btn-dark'
-                type='submit'
-                onClick={() => {
-                  var myText = document.getElementById('sear').value
-                  navigate('/search/' + myText)
-                }}
-              >
-                Search
-              </button>
-              
-            
-            </form>
+            <button
+              className='btn btn-dark'
+              type='submit'
+              onClick={() => {
+                var myText = document.getElementById('sear').value
+                navigate('/search/BirdsInformation/' + myText)
+              }}
+            >
+              Search
+            </button>
+          </form>
         </div>
-        
+
         <div>
           <h1 className='fs-2 fw-bold'>Birds Information</h1>
         </div>

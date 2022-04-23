@@ -43,7 +43,16 @@ function App() {
             path='/BirdsInformation/details/:name'
             element={<DetailedScreen />}
           />
-          <Route exact path='/search/:myText' element={<Search />} />
+          <Route
+            exact
+            path='/search/BirdsInformation/:myText'
+            element={<Search cat='BirdsInformation' />}
+          />
+          <Route
+            exact
+            path='/search/BuySell/:myText'
+            element={<Search cat='BuySell' />}
+          />
           <Route exact path='/' element={<Home />} />
           {/* Routes
                 For

@@ -5,7 +5,7 @@ import Loading from '../../loading'
 import axios from 'axios'
 
 const RemoveBird = () => {
-  const { data: birds, loading } = useApi('/read')
+  const { data: birds, loading } = useApi('/read/BirdsInformation')
   if (loading) return <Loading />
   return (
     <div className='text-center container'>
@@ -13,10 +13,17 @@ const RemoveBird = () => {
       <section>
         {birds.map((b) => {
           return (
-            <section className='row border border-2 border-dark my-2'>
-              <h3 className='col-8'>{b.birdName}</h3>
+            <section className='row border border-2 border-dark my-2 py-2 align-items-center'>
+              <img
+                className='col-3'
+                src={'http://localhost:3001/Images/' + b.image}
+                alt=''
+              />
+              <h3 className='col-3'>{b.birdName}</h3>
+              <h4 className='col-3'>class</h4>
               <button
-                className='col-1 btn btn-outline-dark mx-2 my-2'
+                Style='height:50px'
+                className='col-2 btn btn-outline-dark mx-2 my-2'
                 type='submit'
                 onClick={() => {
                   alert(b._id)
