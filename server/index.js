@@ -2,13 +2,15 @@ require('dotenv').config()
 const express = require('express') // import Express Library of Node JS(JavaScript)
 const mongoose = require('mongoose') // import mongoose ORM(Object Relation Model) for Mongo DB(DataBase)
 const cors = require('cors')
+
 const app = express() // Express Instance
-const BirdsModel = require('./models/abc')
 const SellModel = require('./models/sell')
 const multer = require('multer')
-const path = require('path')
+
 const userRoutes = require('./routes/user')
 const authRoutes = require('./routes/auth')
+const informationRoutes = require('./routes/information')
+const BuySellRoutes = require('./routes/buysell')
 // const deleteRoutes = require('./routes/delete')
 const { v4: uuid } = require('uuid')
 
@@ -21,28 +23,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(__dirname + '/public'))
 
 //routes
+app.use('/BirdsInformation', informationRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
-// app.use('/api/delete', deleteRoutes)
+app.use('/BuySell', BuySellRoutes)
 
-app.delete('/delete/:id', async (req, res) => {
-  const id = req.params.id
-  await BirdsModel.findByIdAndRemove(id).exec()
-  res.send('Item Deleted !!')
-})
-
-//Storage
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './public/Images')
-  },
-  filename: (req, file, cb) => {
-    cb(null, uuid() + file.originalname)
-  },
-})
-
-const upload = multer({ storage: storage })
-//End of Storage
 const db =
   'mongodb+srv://DeeKoders:deekay0312@abc.i8xwk.mongodb.net/awan-birds-care?retryWrites=true&w=majority'
 
@@ -57,96 +42,6 @@ mongoose
     console.log(err)
   })
 //buy/sell Insert
-app.post('/insertForSell', upload.single('imageBird'), async (req, res) => {
-  const birdName = req.body.birdName
-  const age = req.body.birdAge
-  const details = req.body.birdDetails
-  const price = req.body.birdPrice
-  const image = req.file.filename
-
-  const bird = new SellModel({
-    birdName: birdName,
-    age: age,
-    price: price,
-    details: details,
-    image: image,
-  })
-  console.log('Ready to Save')
-  try {
-    await bird.save()
-  } catch (err) {
-    console.log(err)
-  }
-})
-//buy/sell read
-app.get('/readSell', async (req, res) => {
-  SellModel.find({}, (err, result) => {
-    if (err) {
-      res.send(err)
-    }
-
-    res.send(result)
-  })
-})
-
-//Birds Information Insert
-app.post('/insert', upload.single('imageBird'), async (req, res) => {
-  const birdName = req.body.birdName
-  const temp = req.body.birdTemp
-  const size = req.body.birdSize
-  const details = req.body.birdDetails
-  const food = req.body.birdFood
-  const image = req.file.filename
-
-  const bird = new BirdsModel({
-    birdName: birdName,
-    temprature: temp,
-    size: size,
-    food: food,
-    details: details,
-    image: image,
-  })
-  try {
-    await bird.save()
-  } catch (err) {
-    console.log(err)
-  }
-})
-
-app.get('/read/BirdsInformation', async (req, res) => {
-  BirdsModel.find({}, (err, result) => {
-    if (err) {
-      res.send(err)
-    }
-
-    res.send(result)
-  })
-})
-app.get('/read/BuySell', async (req, res) => {
-  SellModel.find({}, (err, result) => {
-    if (err) {
-      res.send(err)
-    }
-
-    res.send(result)
-  })
-})
-
-app.get('/read/:id', async (req, res) => {
-  const id = req.params.id
-  const bird = await BirdsModel.findById(id)
-  console.log(bird)
-  res.send(bird)
-})
-
-// Admin Portal
-
-app.get('/upload', (req, res) => {
-  res.render('upload')
-})
-app.post('/upload', upload.single('testImage'), (req, res) => {
-  res.send('Uploaded')
-})
 
 app.listen(3001, () => {
   console.log('Server is Running on Port 3001')

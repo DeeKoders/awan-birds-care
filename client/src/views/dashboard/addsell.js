@@ -21,7 +21,7 @@ const AddSell = () => {
     formData.append('imageBird', image)
 
     axios
-      .post('http://localhost:3001/insertForSell', formData)
+      .post('http://localhost:3001/BuySell/insert', formData)
       .catch((err) => {})
     window.location = '/adminDashboard/addSell'
   }

@@ -6,7 +6,7 @@ import importImg from '../../images/image_logo.png'
 import { useNavigate } from 'react-router-dom'
 import { PeopleIcon } from '@primer/octicons-react'
 const BirdsInformation = () => {
-  const { data: birds, loading } = useApi('/read/BirdsInformation')
+  const { data: birds, loading } = useApi('/BirdsInformation/read')
   let navigate = useNavigate()
   if (loading) return <Loading />
   console.log(birds)

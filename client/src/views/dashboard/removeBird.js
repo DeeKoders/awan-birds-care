@@ -26,8 +26,9 @@ const RemoveBird = () => {
                 className='col-2 btn btn-outline-dark mx-2 my-2'
                 type='submit'
                 onClick={() => {
-                  alert(b._id)
-                  axios.delete('http://localhost:3001/delete/' + b._id)
+                  axios.delete(
+                    'http://localhost:3001/delete/BirdsInformation/' + b._id
+                  )
                   window.location = '/removeBirdInformation'
                 }}
               >

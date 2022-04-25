@@ -7,7 +7,7 @@ import Loading from '../loading'
 
 const Search = (props) => {
   let { myText } = useParams()
-  const { data: birds, loading } = useApi('/read/' + props.cat)
+  const { data: birds, loading } = useApi('/' + props.cat + '/read')
 
   if (loading) return <Loading />
 

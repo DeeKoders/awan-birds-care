@@ -5,7 +5,7 @@ import importImg from '../../images/image_logo.png'
 import SellBird from './SellBird'
 import { useNavigate } from 'react-router-dom'
 const Sell = () => {
-  const { data: birds, loading } = useApi('/readSell')
+  const { data: birds, loading } = useApi('/BuySell/read')
   let navigate = useNavigate()
   if (loading) return <Loading />
   console.log(birds)
