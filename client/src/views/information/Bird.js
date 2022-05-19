@@ -3,8 +3,8 @@ import React from 'react'
 const Bird = (props) => {
   let navigate = useNavigate()
   return (
-    <article
-      className='card my-2 mx-3'
+    <div
+      className='col-xl-3 col-sm-2 card my-3 py-2 mx-2'
       Style='width:28rem;'
       onClick={() => navigate('/BirdsInformation/details/' + props._id)}
     >
@@ -27,7 +27,7 @@ const Bird = (props) => {
           Details
         </button>
       </div>
-    </article>
+    </div>
   )
 }
 

@@ -31,6 +31,16 @@ app.get('/read', async (req, res) => {
   })
 })
 
+app.get('/readByFilter', async (req, res) => {
+  BirdsModel.find({}, (err, result) => {
+    if (err) {
+      res.send(err)
+    }
+
+    res.send(result)
+  })
+})
+
 app.post('/insert', upload.single('imageBird'), async (req, res) => {
   const birdName = req.body.birdName
   const temp = req.body.birdTemp

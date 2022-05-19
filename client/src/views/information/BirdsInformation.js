@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Bird from './Bird'
 import useApi from '../../hooks/useApi'
 import Loading from '../../loading'
@@ -7,15 +7,19 @@ import { useNavigate } from 'react-router-dom'
 import { PeopleIcon } from '@primer/octicons-react'
 const BirdsInformation = () => {
   const { data: birds, loading } = useApi('/BirdsInformation/read')
+  const [filtered, setFiltered] = useState([])
   let navigate = useNavigate()
   if (loading) return <Loading />
   console.log(birds)
 
   return (
     <div className='row container-fluid'>
-      <div className='col-md-2 px-0 bg-white border-1 rounded-top border border-dark'>
+      <div
+        className='text-center col-md-2 px-0 bg-dark border-1 rounded-top border text-white border-dark my-2'
+        Style='min-height:100vh'
+      >
         <div className='px-4 py-2 '>
-          <h2 className='fs-4 pb-2  border-dark border-bottom fw-bold text-center'>
+          <h2 className='fs-4 pb-2  border-white border-bottom fw-bold text-center'>
             Result Filters
           </h2>
 
@@ -25,7 +29,7 @@ const BirdsInformation = () => {
             </div>
             <div class=' row dropdown'>
               <button
-                class='border border-dark  btn dropdown-toggle'
+                class='border border-white text-white btn dropdown-toggle'
                 type='button'
                 id='dropdownMenuButton1'
                 data-bs-toggle='dropdown'
@@ -33,7 +37,11 @@ const BirdsInformation = () => {
               >
                 Select Category
               </button>
-              <ul class='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
+              <ul
+                class='dropdown-menu'
+                id='drop'
+                aria-labelledby='dropdownMenuButton1'
+              >
                 <li>
                   <a class='dropdown-item' href='#'>
                     Action
@@ -92,7 +100,7 @@ const BirdsInformation = () => {
             </div>
           </div>
           <hr />
-          <button className='btn btn-dark mx-5' type='submit'>
+          <button className='btn btn-outline-light mx-4' type='submit'>
             Apply Filter
           </button>
 
@@ -141,7 +149,7 @@ const BirdsInformation = () => {
           <h1 className='fs-2 fw-bold'>Birds Information</h1>
         </div>
         <div className='container-fluid'>
-          <section className='d-flex row justify-content-center'>
+          <section className=' d-flex row justify-content-between '>
             {birds.map((b) => {
               return <Bird key={b.id} {...b} />
             })}
