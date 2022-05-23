@@ -11,7 +11,7 @@ const Bird = (props) => {
       <img
         src={'http://localhost:3001/Images/' + props.image}
         className='card-img-top img-thumbnail'
-        Style='height:280px'
+        Style='height:290px'
         alt='...'
       />
       <div className='card-body'>

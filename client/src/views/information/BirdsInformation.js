@@ -5,6 +5,9 @@ import Loading from '../../loading'
 import importImg from '../../images/image_logo.png'
 import { useNavigate } from 'react-router-dom'
 import { PeopleIcon } from '@primer/octicons-react'
+import filter from './filter'
+import { Script } from 'vm'
+
 const BirdsInformation = () => {
   const { data: birds, loading } = useApi('/BirdsInformation/read')
   const [filtered, setFiltered] = useState([])
@@ -68,39 +71,53 @@ const BirdsInformation = () => {
             <div class='form-check'>
               <input
                 class='form-check-input'
-                type='checkbox'
+                type='radio'
                 value=''
-                id='flexCheckDefault'
+                id='small'
               />
-              <label class='form-check-label' for='flexCheckDefault'>
+              <label class='form-check-label' for='small'>
                 Small Size Birds
               </label>
             </div>
             <div class='form-check'>
               <input
                 class='form-check-input'
-                type='checkbox'
+                type='radio'
                 value=''
-                id='flexCheckChecked'
+                id='medium'
               />
-              <label class='form-check-label' for='flexCheckChecked'>
+              <label class='form-check-label' for='medium'>
                 Medium Size Birds
               </label>
             </div>
             <div class='form-check'>
               <input
                 class='form-check-input'
-                type='checkbox'
+                type='radio'
                 value=''
-                id='flexCheckChecked'
+                id='large'
               />
-              <label class='form-check-label' for='flexCheckChecked'>
+              <label class='form-check-label' for='large'>
                 Large Size Birds
               </label>
             </div>
           </div>
           <hr />
-          <button className='btn btn-outline-light mx-4' type='submit'>
+          <button
+            className='btn btn-outline-light mx-4'
+            type='submit'
+            onClick={() => {
+              const small = document.querySelector('#small:checked')
+              const medium = document.querySelector('#medium:checked')
+              const large = document.querySelector('#large:checked')
+              for (let i = 0; i < birds.length; i++) {
+                if (birds[i].size == 'Large') {
+                  delete birds[i]
+                }
+              }
+              console.log('Removed')
+            }}
+          >
             Apply Filter
           </button>
 
