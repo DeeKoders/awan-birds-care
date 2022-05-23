@@ -14,6 +14,7 @@ import SignUp from './dashboard/signUp'
 import RemoveBird from './dashboard/removeBird'
 import AddSell from './dashboard/addsell'
 import Sell from './buySell/sell'
+import Needy from './donations/needy'
 // import '../index.css'
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
             <Route exact path='/adminSignIn' element={<Login />} />
             <Route exact path='/Donations' element={<Donations />} />
             <Route exact path='/donations/donor' element={<Donor />} />
+            <Route exact path='/donations/needy' element={<Needy />} />
             <Route
               exact
               path='/BirdsInformation/details/:name'

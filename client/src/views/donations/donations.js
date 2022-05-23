@@ -23,10 +23,10 @@ const Donations = () => {
         <div className='col-md-3 col-sm-auto py-5'>
           <div className='card py-5 mx-4'>
             <div className='card-body'>
-              <h5 className='fs-1 fw-bold'>GET</h5>
-              <p className='fs-4 fw-light'>DONATIONS</p>
+              <h5 className='fs-1 fw-bold'>I NEED</h5>
+              <p className='fs-4 fw-light'>HELPING HAND</p>
               <button
-                onClick={() => navigate('/donations/donor')}
+                onClick={() => navigate('/donations/needy')}
                 className='btn btn-outline-dark'
               >
                 Click Here

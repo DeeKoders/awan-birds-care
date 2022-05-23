@@ -5,13 +5,13 @@ const Bird = (props) => {
   return (
     <div
       className='col-xl-3 col-sm-2 card my-3 py-2 mx-2'
-      Style='width:28rem;'
+      Style='width:33rem;'
       onClick={() => navigate('/BirdsInformation/details/' + props._id)}
     >
       <img
         src={'http://localhost:3001/Images/' + props.image}
         className='card-img-top img-thumbnail'
-        Style='height:290px'
+        Style='height:20rem'
         alt='...'
       />
       <div className='card-body'>
