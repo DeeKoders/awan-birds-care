@@ -1,6 +1,7 @@
 /* Birds-Information - Body */
 .bg {
   background-color: black;
+  align-items: center;
 }
 
 .App {
@@ -14,10 +15,6 @@
   justify-items: center;
 }
 
-.main {
-  min-height: 88.7vh;
-}
-
 .crop {
   width: 200px;
   height: 250px;
@@ -29,7 +26,6 @@
   height: 400px;
   margin: -25px 0 0 -100px;
 }
-
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -42,16 +38,15 @@ body {
   background-color: #dddddd;
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 100%;
   background-attachment: fixed;
 }
-
 .birdlist {
   width: 80vw;
   margin: 2rem auto;
   display: grid;
   gap: 1rem;
 }
-
 @media screen and (min-width: 1200px) {
   .birdlist {
     grid-template-columns: repeat(3, 1fr);
