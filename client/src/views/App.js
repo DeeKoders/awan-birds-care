@@ -22,7 +22,7 @@ function App() {
   console.log(user)
 
   return (
-    <div className='container-fluid '>
+    <div className='container-fluid font-family-sans-serif '>
       <div className='main'>
         <Router>
           <Navbar data={user} />

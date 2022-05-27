@@ -4,14 +4,16 @@ const Bird = (props) => {
   let navigate = useNavigate()
   return (
     <div
-      className='col-xl-3 col-sm-2 card my-3 py-2 mx-2'
-      Style='width:33rem;'
+      className='col-md-4 col-sm-6 bg-light bg-opacity-75  card px-2 pt-2'
+      Style="border-radius:12px"
+
       onClick={() => navigate('/BirdsInformation/details/' + props._id)}
     >
       <img
         src={'http://localhost:3001/Images/' + props.image}
-        className='card-img-top img-thumbnail'
-        Style='height:20rem'
+        className='card-img-top img-thumbnail bg-opacity-75 bg-light  '
+        Style='height:15rem'
+        
         alt='...'
       />
       <div className='card-body'>

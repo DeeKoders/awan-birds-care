@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { PeopleIcon } from '@primer/octicons-react'
 import filter from './filter'
 import { Script } from 'vm'
-
+import '../../index.css'
 const BirdsInformation = () => {
   const { data: birds, loading } = useApi('/BirdsInformation/read')
   const [filtered, setFiltered] = useState([])
@@ -18,6 +18,7 @@ const BirdsInformation = () => {
   return (
     <div className='row container-fluid'>
       <div
+      id='sidebar'
         className='text-center col-md-2 px-0 bg-dark border-1 rounded-top border text-white border-dark my-2'
         Style='min-height:100vh'
       >
@@ -121,7 +122,7 @@ const BirdsInformation = () => {
             Apply Filter
           </button>
 
-          <div class='crop ' Style='margin-top:100px'>
+          <div class='crop ' Style='margin-top:60px'>
             <img src={importImg} alt='Donald Duck' />
           </div>
           <div className='row text-center'>
@@ -166,7 +167,7 @@ const BirdsInformation = () => {
           <h1 className='fs-2 fw-bold'>Birds Information</h1>
         </div>
         <div className='container-fluid'>
-          <section className=' d-flex row justify-content-between '>
+          <section className=' row justify-content-between '>
             {birds.map((b) => {
               return <Bird key={b.id} {...b} />
             })}
