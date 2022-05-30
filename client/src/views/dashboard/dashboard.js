@@ -55,9 +55,9 @@ const Dashboard = () => {
             </h1>
             <ul className='nav flex-column'>
               <li className='nav-item'>
-                <Link className='nav-link text-dark fw-bold' to='/'>
+                <Link className='nav-link text-dark fw-bold' to='/adminDashboard/pendingDonor'>
                   <LogIcon size={20} className='mx-2' />
-                  Donors Report
+                  Donor's Pending Request
                 </Link>
               </li>
               <hr />

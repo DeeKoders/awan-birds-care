@@ -33,7 +33,8 @@ app.get('/read', async (req, res) => {
 
 app.get('/readBySize/:name', async (req, res) => {
   const name = req.params.name
-  BirdsModel.find({ size: name }, (err, result) => {
+  console.log(name)
+  BirdsModel.find({size: name}, (err, result) => {
     if (err) {
       res.send(err)
     }

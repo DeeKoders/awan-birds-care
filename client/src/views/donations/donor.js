@@ -1,28 +1,43 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 const Donor = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phno, setPhno] = useState('')
-  const [city, setCity] = useState('')
-  const [address, setAddress] = useState('')
-  const [state, setState] = useState('')
-  const [zip, setZip] = useState('')
+  const [name, setName] = useState('Khan')
+  const [email, setEmail] = useState('email@gmail.com')
+  const [phno, setPhno] = useState('0300000233')
+  const [city, setCity] = useState('Peshwar')
+  const [address, setAddress] = useState('address')
+  const [state, setState] = useState('state')
+  const [zip, setZip] = useState('zip')
 
 
   const submitDonor = (e) =>{
-    e.preventDefault();
+    e.preventDefault()
     const formData = new FormData()
     formData.append('name', name)
     formData.append('email', email)
     formData.append('city', city)
-    formData.append('birdDetails', details)
-    formData.append('birdSize', size)
-    formData.append('imageBird', image)
+    formData.append('phno', phno)
+    formData.append('address', address)
+    formData.append('state', state)
+    formData.append('zip', zip)
+
+    const data = {
+      name,
+      email,
+      city,
+      state,
+      phno,
+      address,
+      zip
+    }
+
     axios
-      .post('http://localhost:3001/BirdsInformation/insert', formData)
+      .post('http://localhost:3001/Donors/insert', data)
       .catch((err) => {})
-    window.location = '/adminDashboard/addBirds'
+
+    alert(name)
+    window.location = '/donations/donor'
     
 
   }

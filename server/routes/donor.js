@@ -10,19 +10,22 @@ const DonorModel = require('../models/donor')
 //   res.send(bird)
 // })
 
-// app.get('/read', async (req, res) => {
-//   console.log('first')
-//   BirdsModel.find({}, (err, result) => {
-//     if (err) {
-//       res.send(err)
-//     }
+app.get('/read', async (req, res) => {
+  console.log('Donors Data Fetched')
+  DonorModel.find({}, (err, result) => {
+    if (err) {
+      res.send(err)
+    }
 
-//     res.send(result)
-//   })
-// })
+    res.send(result)
+  })
+})
 
 
 app.post('/insert', async (req, res) => {
+  console.log('===========================')
+  console.log(req.body)
+  console.log('===========================')
   const name = req.body.name
   const email = req.body.email
   const city = req.body.city
@@ -31,7 +34,7 @@ app.post('/insert', async (req, res) => {
   const address = req.body.address
   const phno = req.body.phno
 
-  const donor = new DonorModel({
+  const donor = new DonorModel({ 
     name: name,
     email: email,
     city: city,
@@ -42,6 +45,7 @@ app.post('/insert', async (req, res) => {
   })
   try {
     await donor.save()
+    console.log("Record Added")
   } catch (err) {
     console.log(err)
   }

@@ -7,13 +7,22 @@ import { useNavigate } from 'react-router-dom'
 import { PeopleIcon } from '@primer/octicons-react'
 import filter from './filter'
 import { Script } from 'vm'
+import axios from '../../api/client';
 import '../../index.css'
 const BirdsInformation = () => {
-  const { data: birds, loading } = useApi('/BirdsInformation/read')
+  const { data: birds, loading, setData } = useApi('/BirdsInformation/read')
   const [filtered, setFiltered] = useState([])
+  const [currentFilter, setCurrentFilter] = useState('Large')
   let navigate = useNavigate()
   if (loading) return <Loading />
   console.log(birds)
+
+  const handleFilter  = async (e) => {
+    setCurrentFilter(e.currentTarget.value)
+    const filter = e.currentTarget.value;
+    const res = await axios.get('/BirdsInformation/readBySize/' + filter)
+    setData(res.data)
+  }
 
   return (
     <div className='row container-fluid'>
@@ -73,7 +82,10 @@ const BirdsInformation = () => {
               <input
                 class='form-check-input'
                 type='radio'
-                value=''
+                name='Size'
+                value='Small'
+                checked={currentFilter === 'Small'}
+                onChange={handleFilter}
                 id='small'
               />
               <label class='form-check-label' for='small'>
@@ -84,8 +96,10 @@ const BirdsInformation = () => {
               <input
                 class='form-check-input'
                 type='radio'
-                value=''
+                value='Medium'
                 id='medium'
+                checked={currentFilter === 'Medium'}
+                onChange={handleFilter}
               />
               <label class='form-check-label' for='medium'>
                 Medium Size Birds
@@ -95,8 +109,10 @@ const BirdsInformation = () => {
               <input
                 class='form-check-input'
                 type='radio'
-                value=''
+                value='Large'
                 id='large'
+                checked={currentFilter === 'Large'}
+                onChange={handleFilter}
               />
               <label class='form-check-label' for='large'>
                 Large Size Birds
@@ -108,18 +124,12 @@ const BirdsInformation = () => {
             className='btn btn-outline-light mx-4'
             type='submit'
             onClick={() => {
-              const small = document.querySelector('#small:checked')
-              const medium = document.querySelector('#medium:checked')
-              const large = document.querySelector('#large:checked')
-              for (let i = 0; i < birds.length; i++) {
-                if (birds[i].size == 'Large') {
-                  delete birds[i]
-                }
-              }
-              console.log('Removed')
+              setCurrentFilter("None")
+              const res = await axios.get('/BirdsInformation/read')
+              setData(res.data)
             }}
           >
-            Apply Filter
+            Remove Filter
           </button>
 
           <div class='crop ' Style='margin-top:60px'>
