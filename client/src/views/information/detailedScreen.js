@@ -6,7 +6,7 @@ import Loading from '../../loading'
 
 const DetailedScreen = () => {
   let { name } = useParams()
-  const { data: bird, loading } = useApi('/read/' + name)
+  const { data: bird, loading } = useApi('/BirdsInformation/read/' + name)
 
   if (loading) return <Loading />
 

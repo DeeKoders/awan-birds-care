@@ -6,6 +6,7 @@ const AddBird = () => {
   const [temp, setTemp] = useState('')
   const [size, setSize] = useState('')
   const [food, setFood] = useState('')
+  const [type, setType] = useState('')
   const [details, setDetails] = useState('')
   const [image, setImage] = useState([])
 
@@ -18,6 +19,7 @@ const AddBird = () => {
     formData.append('birdName', name)
     formData.append('birdTemp', temp)
     formData.append('birdFood', food)
+    formData.append('birdType', type)
     formData.append('birdDetails', details)
     formData.append('birdSize', size)
     formData.append('imageBird', image)
@@ -91,6 +93,20 @@ const AddBird = () => {
             }}
             id='food'
             placeholder="Enter Bird's Required Food"
+          />
+        </div>
+        <div className='col-md-6'>
+          <label for='type' className='form-label'>
+            Bird Type
+          </label>
+          <input
+            type='text'
+            className='form-control'
+            onChange={(e) => {
+              setType(e.target.value)
+            }}
+            id='type'
+            placeholder="Enter Bird's Type"
           />
         </div>
         <div className='col-12'>

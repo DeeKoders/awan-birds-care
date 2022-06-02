@@ -49,12 +49,14 @@ app.post('/insert', upload.single('imageBird'), async (req, res) => {
   const size = req.body.birdSize
   const details = req.body.birdDetails
   const food = req.body.birdFood
+  const type = req.body.birdType
   const image = req.file.filename
 
   const bird = new BirdsModel({
     birdName: birdName,
     temprature: temp,
     size: size,
+    type: type,
     food: food,
     details: details,
     image: image,

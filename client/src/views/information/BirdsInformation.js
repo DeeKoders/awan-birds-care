@@ -4,15 +4,12 @@ import useApi from '../../hooks/useApi'
 import Loading from '../../loading'
 import importImg from '../../images/image_logo.png'
 import { useNavigate } from 'react-router-dom'
-import { PeopleIcon } from '@primer/octicons-react'
-import filter from './filter'
-import { Script } from 'vm'
 import axios from '../../api/client';
 import '../../index.css'
 const BirdsInformation = () => {
   const { data: birds, loading, setData } = useApi('/BirdsInformation/read')
   const [filtered, setFiltered] = useState([])
-  const [currentFilter, setCurrentFilter] = useState('Large')
+  const [currentFilter, setCurrentFilter] = useState('None')
   let navigate = useNavigate()
   if (loading) return <Loading />
   console.log(birds)
@@ -123,7 +120,7 @@ const BirdsInformation = () => {
           <button
             className='btn btn-outline-light mx-4'
             type='submit'
-            onClick={() => {
+            onClick={async () => {
               setCurrentFilter("None")
               const res = await axios.get('/BirdsInformation/read')
               setData(res.data)

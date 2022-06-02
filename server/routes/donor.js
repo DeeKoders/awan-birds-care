@@ -16,7 +16,6 @@ app.get('/read', async (req, res) => {
     if (err) {
       res.send(err)
     }
-
     res.send(result)
   })
 })
