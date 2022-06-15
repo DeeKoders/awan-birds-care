@@ -75,6 +75,7 @@ function App() {
             />
             <Route exact path='/adminDashboard/addSell' element={<AddSell />} />
             <Route exact path='/adminDashboard/pendingDonor' element={<PendingDonor />} />
+            <Route exact path='/adminDashboard/approvedDonor' element={<PendingDonor />} />
           </Routes>
         </Router>
       </div>

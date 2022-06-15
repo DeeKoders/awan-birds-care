@@ -139,7 +139,7 @@ const Sell = () => {
           <h1 className='fs-2 fw-bold'>Buy & Sell</h1>
         </div>
         <div className='container-fluid'>
-          <section className='d-flex row justify-content-center'>
+          <section className='row justify-content-between'>
             {birds.map((b) => {
               return <SellBird key={b.id} {...b} />
             })}

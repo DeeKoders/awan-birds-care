@@ -3,12 +3,26 @@ const DonorModel = require('../models/donor')
 
 
 
-// app.get('/read/:id', async (req, res) => {
-//   const id = req.params.id
-//   const bird = await BirdsModel.findById(id)
-//   console.log(bird)
-//   res.send(bird)
-// })
+app.get('/readPending', async (req, res) => {
+  DonorModel.find({approve: 'false'}, (err,cb)=>{
+    if(err){
+      console.log(err)
+    }
+    res.send(cb)
+  })
+  
+})
+
+app.get('/readApproved', async (req, res) => {
+  DonorModel.find({approve: 'true'}, (err,cb)=>{
+    if(err){
+      console.log(err)
+    }
+    console.log(cb)
+    res.send(cb)
+  })
+  
+})
 
 app.get('/read', async (req, res) => {
   console.log('Donors Data Fetched')
@@ -19,7 +33,17 @@ app.get('/read', async (req, res) => {
     res.send(result)
   })
 })
-
+app.put('/approve/:id', async (req, res) => {
+  id = req.params.id
+  DonorModel.findByIdAndUpdate(id, {approve:'true'}, (err,cb) => {
+    if(err){
+      console.log(err)
+    }
+    else(
+      res.send(cb)
+    )
+  })
+})
 
 app.post('/insert', async (req, res) => {
   console.log('===========================')
@@ -32,6 +56,7 @@ app.post('/insert', async (req, res) => {
   const zip = req.body.zip
   const address = req.body.address
   const phno = req.body.phno
+  const approve = req.body.approve
 
   const donor = new DonorModel({ 
     name: name,
@@ -40,7 +65,8 @@ app.post('/insert', async (req, res) => {
     state: state,
     zip: zip,
     address: address,
-    phno: phno
+    phno: phno,
+    approve: approve
   })
   try {
     await donor.save()
@@ -50,17 +76,10 @@ app.post('/insert', async (req, res) => {
   }
 })
 
-// app.delete('/delete/:id', async (req, res) => {
-//   const id = req.params.id
-//   const bird = await BirdsModel.findById(id)
-//   fs.unlink('./public/Images/' + bird.image, (err) => {
-//     if (err) console.log(err)
-//     else {
-//       console.log('\nDeleted Image')
-//     }
-//   })
-//   await BirdsModel.findByIdAndRemove(id).exec()
-//   res.send('Item Deleted !!')
-// })
+app.delete('/delete/:id', async (req, res) => {
+  const id = req.params.id
+  await DonorModel.findByIdAndRemove(id).exec()
+  res.send('Item Deleted !!')
+})
 
 module.exports = app

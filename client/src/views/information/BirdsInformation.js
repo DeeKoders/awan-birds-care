@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from '../../api/client';
 import '../../index.css'
 const BirdsInformation = () => {
-  const { data: birds, loading, setData } = useApi('/BirdsInformation/read')
+  const { data: birds, loading, setData, setLoading } = useApi('/BirdsInformation/read')
   const [filtered, setFiltered] = useState([])
   const [currentFilter, setCurrentFilter] = useState('None')
   let navigate = useNavigate()
@@ -17,8 +17,10 @@ const BirdsInformation = () => {
   const handleFilter  = async (e) => {
     setCurrentFilter(e.currentTarget.value)
     const filter = e.currentTarget.value;
+    setLoading(true)
     const res = await axios.get('/BirdsInformation/readBySize/' + filter)
     setData(res.data)
+    setLoading(false)
   }
 
   return (

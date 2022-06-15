@@ -4,12 +4,12 @@ import { CheckCircleIcon, TrashIcon } from '@primer/octicons-react'
 import Loading from '../../loading'
 import axios from 'axios'
 
-function PendingDonor() {
-    const { data: donors, loading,setData, setLoading } = useApi('/Donors/readPending')
+function ApprovedDonor() {
+    const { data: donors, loading,setData, setLoading } = useApi('/Donors/readApproved')
     if (loading) return <Loading />
   return (
     <div className='container'>
-      <h1 className='text-center'>Pending Donor Requests</h1>
+      <h1 className='text-center'>Approved Donors</h1>
       <table className='table'>
         <thead>
           <tr>
@@ -36,17 +36,7 @@ function PendingDonor() {
                     className='btn btn-outline-dark border  '
                     type='submit'
                     onClick={async () => {
-                      axios.put(
-                        'http://localhost:3001/Donors/approve/' + b._id
-                      )
-                      setLoading(true)
-                      const res = await axios.get('http://localhost:3001/Donors/readPending')
-                      setData(res.data)
-                      console.log('=====================================')
-                      console.log(donors)
-                      console.log('=====================================')
-                      setLoading(false)
-                      window.location = '/adminDashboard/pendingDonor'
+                      
                     }}
                   >
                     <CheckCircleIcon size={26} />
@@ -62,4 +52,4 @@ function PendingDonor() {
   )
 }
 
-export default PendingDonor
+export default ApprovedDonor

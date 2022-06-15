@@ -5,6 +5,10 @@ const DonorSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
+    approve:{
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       required: true,

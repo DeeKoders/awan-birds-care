@@ -2,25 +2,19 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 const Donor = () => {
-  const [name, setName] = useState('Khan')
-  const [email, setEmail] = useState('email@gmail.com')
-  const [phno, setPhno] = useState('0300000233')
-  const [city, setCity] = useState('Peshwar')
-  const [address, setAddress] = useState('address')
-  const [state, setState] = useState('state')
-  const [zip, setZip] = useState('zip')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phno, setPhno] = useState('')
+  const [city, setCity] = useState('')
+  const [address, setAddress] = useState('')
+  const [state, setState] = useState('')
+  const [zip, setZip] = useState('')
+  const [approve, setApprove] = useState('false')
 
 
   const submitDonor = (e) =>{
     e.preventDefault()
-    const formData = new FormData()
-    formData.append('name', name)
-    formData.append('email', email)
-    formData.append('city', city)
-    formData.append('phno', phno)
-    formData.append('address', address)
-    formData.append('state', state)
-    formData.append('zip', zip)
+    setApprove('false')
 
     const data = {
       name,
@@ -29,7 +23,8 @@ const Donor = () => {
       state,
       phno,
       address,
-      zip
+      zip,
+      approve
     }
 
     axios

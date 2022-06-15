@@ -62,9 +62,9 @@ const Dashboard = () => {
               </li>
               <hr />
               <li className='nav-item'>
-                <Link className='nav-link text-dark fw-bold' to='/'>
+                <Link className='nav-link text-dark fw-bold' to='/adminDashboard/approvedDonor'>
                   <LogIcon size={20} className='mx-2' />
-                  Donations Reports
+                  Approved Donors
                 </Link>
               </li>
               <hr />

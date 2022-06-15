@@ -18,7 +18,7 @@ const useApi = (url) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return { data, loading, setData }
+  return { data, loading, setData, setLoading }
 }
 
 export default useApi

@@ -4,8 +4,8 @@ const SellBird = (props) => {
   let navigate = useNavigate()
   return (
     <article
-      className='card my-2 mx-3'
-      Style='width:28rem;'
+    className='col-md-4 col-sm-6 bg-light bg-opacity-75  card '
+    Style="border-radius:5px"
       onClick={() => navigate('/BirdSell/details/' + props._id)}
     >
       <img
