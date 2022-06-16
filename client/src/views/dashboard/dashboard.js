@@ -43,7 +43,7 @@ const Dashboard = () => {
               </li>
               <hr />
               <li className='nav-item'>
-                <Link className='nav-link text-dark fw-bold' to='/'>
+                <Link className='nav-link text-dark fw-bold' to='/adminDashboard/removeSell'>
                   <PlusCircleIcon className='mx-2' size={20} />
                   Remove Bird - Buy/Sell
                 </Link>

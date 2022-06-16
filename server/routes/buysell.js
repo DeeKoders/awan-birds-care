@@ -35,6 +35,19 @@ app.post('/insert', upload.single('imageBird'), async (req, res) => {
   }
 })
 //buy/sell read
+app.delete('/delete/:id', async (req, res) => {
+  const id = req.params.id
+  const bird = await SellModel.findById(id)
+  fs.unlink('./public/Images/' + bird.image, (err) => {
+    if (err) console.log(err)
+    else {
+      console.log('\nDeleted Image')
+    }
+  })
+  await SellModel.findByIdAndRemove(id).exec()
+  res.send('Item Deleted !!')
+})
+
 
 app.get('/read', async (req, res) => {
   SellModel.find({}, (err, result) => {

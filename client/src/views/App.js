@@ -16,6 +16,7 @@ import AddSell from './dashboard/addsell'
 import Sell from './buySell/sell'
 import Needy from './donations/needy'
 import PendingDonor from './dashboard/pendingDonor'
+import RemoveSell from './dashboard/removeSell'
 // import '../index.css'
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
               element={<AddBird />}
             />
             <Route exact path='/adminDashboard/addSell' element={<AddSell />} />
+            <Route exact path='/adminDashboard/removeSell' element={<RemoveSell />} />
             <Route exact path='/adminDashboard/pendingDonor' element={<PendingDonor />} />
             <Route exact path='/adminDashboard/approvedDonor' element={<PendingDonor />} />
           </Routes>
