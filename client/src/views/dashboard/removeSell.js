@@ -8,7 +8,7 @@ const RemoveSell = () => {
   const { data: birds, loading } = useApi('/BuySell/read')
   if (loading) return <Loading />
   return (
-    <div className='container'>
+    <div className='container text-center'>
       <h1 className='text-center'>BIRD LIST - BUY SELL</h1>
       <table className='table'>
         <thead>

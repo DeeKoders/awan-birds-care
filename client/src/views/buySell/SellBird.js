@@ -4,9 +4,9 @@ const SellBird = (props) => {
   let navigate = useNavigate()
   return (
     <article
-    className='col-md-4 col-sm-6 bg-light bg-opacity-75  card '
-    Style="border-radius:5px"
-      onClick={() => navigate('/BirdSell/details/' + props._id)}
+      className='col-md-4 col-sm-6 bg-light bg-opacity-75  card '
+      Style='border-radius:5px'
+      onClick={() => navigate('/BuySell/details/' + props._id)}
     >
       <img
         src={'http://localhost:3001/Images/' + props.image}
@@ -16,11 +16,11 @@ const SellBird = (props) => {
       />
       <div className='card-body'>
         <h5 className='card-title'>{props.birdName}</h5>
-        <p className='card-text '>{props.price}</p>
+        <p className='card-text '>PKR {props.price}</p>
         <button
           type='button'
           className='btn btn-outline-secondary'
-          onClick={() => navigate('/screens/BirdSell/details/' + props._id)}
+          onClick={() => navigate('/BuySell/details/' + props._id)}
         >
           Details
         </button>

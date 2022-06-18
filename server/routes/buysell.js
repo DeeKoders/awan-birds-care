@@ -1,6 +1,7 @@
 const app = require('express').Router()
 const SellModel = require('../models/sell')
 const multer = require('multer')
+const fs = require('fs')
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -48,7 +49,6 @@ app.delete('/delete/:id', async (req, res) => {
   res.send('Item Deleted !!')
 })
 
-
 app.get('/read', async (req, res) => {
   SellModel.find({}, (err, result) => {
     if (err) {
@@ -57,6 +57,13 @@ app.get('/read', async (req, res) => {
 
     res.send(result)
   })
+})
+
+app.get('/read/:id', async (req, res) => {
+  const id = req.params.id
+  const bird = await SellModel.findById(id)
+  console.log(bird)
+  res.send(bird)
 })
 
 module.exports = app
