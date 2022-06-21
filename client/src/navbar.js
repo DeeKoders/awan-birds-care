@@ -4,6 +4,7 @@ import { PeopleIcon } from '@primer/octicons-react'
 
 import './index.css'
 const Navbar = (props) => {
+  console.log("User = " + localStorage.getItem('emailID'))
   let navigate = useNavigate()
   return (
     <div>
@@ -78,16 +79,16 @@ const Navbar = (props) => {
                   </button>
                 </div>
               ) : (
-                <button
-                  className='btn btn-outline-dark mx-2'
-                  type='submit'
-                  onClick={() => {
-                    navigate('/adminSignIn')
-                  }}
-                >
-                  <PeopleIcon  size='medium' />
-                </button>
-              )}
+                  <button
+                    className='btn btn-outline-dark mx-2'
+                    type='submit'
+                    onClick={() => {
+                      navigate('/adminSignIn')
+                    }}
+                  >
+                    <PeopleIcon size='medium' />
+                  </button>
+                )}
             </form>
           </div>
         </div>

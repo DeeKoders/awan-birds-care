@@ -1,7 +1,7 @@
 import { PlusCircleIcon, LogIcon } from '@primer/octicons-react'
 import { Link } from 'react-router-dom'
 import React from 'react'
-
+console.log(localStorage.getItem("emailID"))
 const Dashboard = () => {
   return (
     <div className='container-fluid my-3'>

@@ -19,6 +19,7 @@ const Login = () => {
       const url = 'http://localhost:3001/api/auth'
       const { data: res } = await axios.post(url, data)
       localStorage.setItem('token', res.data)
+      localStorage.setItem('emailID', data["email"])
       window.location = '/adminDashboard'
       // navigate('/adminDashboard')
     } catch (error) {
