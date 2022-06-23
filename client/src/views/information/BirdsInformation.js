@@ -4,19 +4,24 @@ import useApi from '../../hooks/useApi'
 import Loading from '../../loading'
 import importImg from '../../images/image_logo.png'
 import { useNavigate } from 'react-router-dom'
-import axios from '../../api/client';
+import axios from '../../api/client'
 import '../../index.css'
 const BirdsInformation = () => {
-  const { data: birds, loading, setData, setLoading } = useApi('/BirdsInformation/read')
+  const {
+    data: birds,
+    loading,
+    setData,
+    setLoading,
+  } = useApi('/BirdsInformation/read')
   const [filtered, setFiltered] = useState([])
   const [currentFilter, setCurrentFilter] = useState('None')
   let navigate = useNavigate()
   if (loading) return <Loading />
   console.log(birds)
 
-  const handleFilter  = async (e) => {
+  const handleFilter = async (e) => {
     setCurrentFilter(e.currentTarget.value)
-    const filter = e.currentTarget.value;
+    const filter = e.currentTarget.value
     setLoading(true)
     const res = await axios.get('/BirdsInformation/readBySize/' + filter)
     setData(res.data)
@@ -26,7 +31,7 @@ const BirdsInformation = () => {
   return (
     <div className='row container-fluid'>
       <div
-      id='sidebar'
+        id='sidebar'
         className='text-center col-md-2 px-0 bg-dark border-1 rounded-top border text-white border-dark my-2'
         Style='min-height:100vh'
       >
@@ -123,7 +128,7 @@ const BirdsInformation = () => {
             className='btn btn-outline-light mx-4'
             type='submit'
             onClick={async () => {
-              setCurrentFilter("None")
+              setCurrentFilter('None')
               const res = await axios.get('/BirdsInformation/read')
               setData(res.data)
             }}
