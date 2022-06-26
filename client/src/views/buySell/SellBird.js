@@ -10,20 +10,21 @@ const SellBird = (props) => {
     >
       <img
         src={'http://localhost:3001/Images/' + props.image}
-        className='card-img-top img-thumbnail'
+        className='card-img-top mt-2 img-thumbnail'
         Style='height:280px'
         alt='...'
       />
       <div className='card-body'>
-        <h5 className='card-title'>{props.birdName}</h5>
-        <p className='card-text '>PKR {props.price}</p>
-        <button
-          type='button'
-          className='btn btn-outline-secondary'
-          onClick={() => navigate('/BuySell/details/' + props._id)}
-        >
-          Details
-        </button>
+        <p className='card-text fs-5 my-0'>{props.birdName}</p>
+        <p className='card-title fw-bold fs-4'>Rs. {props.price}</p>
+        <div className='row mt-4'>
+          <p className='col card-text  my-0 text-dark opacity-50'>
+            {props.sellerLocation}, Pakistan
+          </p>
+          <p className='col card-text my-0  text-dark opacity-50'>
+            Owned by: {props.sellerName}
+          </p>
+        </div>
       </div>
     </article>
   )

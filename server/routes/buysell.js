@@ -16,6 +16,10 @@ const upload = multer({ storage: storage })
 app.post('/insert', upload.single('imageBird'), async (req, res) => {
   console.log(req.file.filename)
   const birdName = req.body.birdName
+  const sellerName = req.body.sellerName
+  const sellerLocation = req.body.sellerLocation
+  const sellerNumber = req.body.sellerNumber
+  const type = req.body.type
   const age = req.body.birdAge
   const details = req.body.birdDetails
   const price = req.body.birdPrice
@@ -27,6 +31,10 @@ app.post('/insert', upload.single('imageBird'), async (req, res) => {
     price: price,
     details: details,
     image: image,
+    sellerName: sellerName,
+    sellerNumber: sellerNumber,
+    sellerLocation: sellerLocation,
+    type: type,
   })
   console.log('Ready to Save')
   try {

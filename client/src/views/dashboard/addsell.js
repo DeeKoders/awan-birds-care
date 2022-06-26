@@ -3,7 +3,11 @@ import React, { useState } from 'react'
 
 const AddSell = () => {
   const [name, setName] = useState('')
+  const [sellerName, setSellerName] = useState('')
+  const [sellerLocation, setSellerLocation] = useState('')
+  const [sellerNumber, setSellerNumber] = useState('')
   const [price, setPrice] = useState('')
+  const [type, setType] = useState('')
   const [age, setAge] = useState('')
   const [details, setDetails] = useState('')
   const [image, setImage] = useState([])
@@ -15,7 +19,11 @@ const AddSell = () => {
     e.preventDefault()
     const formData = new FormData()
     formData.append('birdName', name)
+    formData.append('sellerName', sellerName)
+    formData.append('sellerNumber', sellerNumber)
+    formData.append('sellerLocation', sellerLocation)
     formData.append('birdAge', age)
+    formData.append('type', type)
     formData.append('birdPrice', price)
     formData.append('birdDetails', details)
     formData.append('imageBird', image)
@@ -48,6 +56,62 @@ const AddSell = () => {
             }}
             className='form-control'
             id='birdName'
+          />
+        </div>
+        <div className='col-md-6'>
+          <label for='sellerName' className='form-label'>
+            Seller Name
+          </label>
+          <input
+            type='text'
+            placeholder='Enter Name of the Seller'
+            onChange={(e) => {
+              setSellerName(e.target.value)
+            }}
+            className='form-control'
+            id='sellerName'
+          />
+        </div>
+        <div className='col-md-6'>
+          <label for='sellerNumber' className='form-label'>
+            Seller Contact Number
+          </label>
+          <input
+            type='text'
+            placeholder='Enter Contact Number of the Seller'
+            onChange={(e) => {
+              setSellerNumber(e.target.value)
+            }}
+            className='form-control'
+            id='sellerNumber'
+          />
+        </div>
+        <div className='col-md-6'>
+          <label for='sellerLocation' className='form-label'>
+            Seller Location
+          </label>
+          <input
+            type='text'
+            placeholder='Enter Location of the Seller'
+            onChange={(e) => {
+              setSellerLocation(e.target.value)
+            }}
+            className='form-control'
+            id='sellerLocation'
+          />
+        </div>
+        <div className='col-md-6'>
+          <label for='birdType' className='form-label'>
+            Bird Type
+          </label>
+          <input
+            type='text'
+            placeholder='Enter Type of Bird'
+            onChange={(e) => {
+              setType(e.target.value)
+            }}
+            className='form-control'
+            id='birdType'
           />
         </div>
         <div className='col-md-6'>

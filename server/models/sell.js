@@ -5,6 +5,18 @@ const SellSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  sellerName: {
+    type: String,
+    required: true,
+  },
+  sellerNumber: {
+    type: String,
+    required: true,
+  },
+  sellerLocation: {
+    type: String,
+    required: true,
+  },
   image: {
     type: String,
     required: true,
@@ -18,6 +30,10 @@ const SellSchema = new mongoose.Schema({
     required: true,
   },
   price: {
+    type: String,
+    required: true,
+  },
+  type: {
     type: String,
     required: true,
   },
