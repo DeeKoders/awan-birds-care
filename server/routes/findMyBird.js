@@ -1,5 +1,5 @@
 const app = require('express').Router()
-const BirdsModel = require('../models/abc')
+const FindModel = require('../models/findMyBird')
 const fs = require('fs')
 const multer = require('multer')
 
@@ -13,52 +13,18 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage })
 
-app.get('/read/:id', async (req, res) => {
-  const id = req.params.id
-  const bird = await BirdsModel.findById(id)
-  console.log(bird)
-  res.send(bird)
-})
-
-app.get('/read', async (req, res) => {
-  console.log('first')
-  BirdsModel.find({}, (err, result) => {
-    if (err) {
-      res.send(err)
-    }
-
-    res.send(result)
-  })
-})
-
-app.get('/readBySize/:name', async (req, res) => {
-  const name = req.params.name
-  console.log(name)
-  BirdsModel.find({ size: name }, (err, result) => {
-    if (err) {
-      res.send(err)
-    }
-
-    res.send(result)
-  })
-})
-
 app.post('/insert', upload.single('imageBird'), async (req, res) => {
   const birdName = req.body.birdName
-  const temp = req.body.birdTemp
   const size = req.body.birdSize
-  const details = req.body.birdDetails
-  const food = req.body.birdFood
+  const color = req.body.birdColor
   const type = req.body.birdType
   const image = req.file.filename
 
-  const bird = new BirdsModel({
+  const bird = new FindModel({
     birdName: birdName,
-    temprature: temp,
     size: size,
     type: type,
-    food: food,
-    details: details,
+    color: color,
     image: image,
   })
   try {
@@ -68,17 +34,52 @@ app.post('/insert', upload.single('imageBird'), async (req, res) => {
   }
 })
 
-app.delete('/delete/:id', async (req, res) => {
+app.get('/read/:id', async (req, res) => {
   const id = req.params.id
   const bird = await BirdsModel.findById(id)
-  fs.unlink('./public/Images/' + bird.image, (err) => {
-    if (err) console.log(err)
-    else {
-      console.log('\nDeleted Image')
-    }
-  })
-  await BirdsModel.findByIdAndRemove(id).exec()
-  res.send('Item Deleted !!')
+  console.log(bird)
+  res.send(bird)
 })
 
+app.get('/readByName/:name', async (req, res) => {
+  const name = req.params.name
+  FindModel.find({ $text: { $search: name } }, (err, result) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(result)
+    }
+  })
+})
+app.get('/readBySize/:size', async (req, res) => {
+  const size = req.params.size
+  FindModel.find({ size: size }, (err, result) => {
+    if (err) {
+      res.send(err)
+    }
+
+    res.send(result)
+  })
+})
+app.post('/insert', upload.single('imageBird'), async (req, res) => {
+  const birdName = req.body.birdName
+  const size = req.body.birdSize
+  const color = req.body.birdColor
+  const type = req.body.birdType
+  const image = req.file.filename
+
+  const bird = new FindModel({
+    birdName: birdName,
+    color: color,
+    size: size,
+    type: type,
+
+    image: image,
+  })
+  try {
+    await bird.save()
+  } catch (err) {
+    console.log(err)
+  }
+})
 module.exports = app

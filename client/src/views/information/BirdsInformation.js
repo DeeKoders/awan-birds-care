@@ -6,6 +6,7 @@ import importImg from '../../images/image_logo.png'
 import { useNavigate } from 'react-router-dom'
 import axios from '../../api/client'
 import '../../index.css'
+import { motion } from 'framer-motion/dist/framer-motion'
 const BirdsInformation = () => {
   const {
     data: birds,
@@ -29,7 +30,17 @@ const BirdsInformation = () => {
   }
 
   return (
-    <div className='row container-fluid'>
+    <motion.div
+      Style='min-height: 100vh'
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='row container-fluid'
+    >
       <div
         id='sidebar'
         className='text-center col-md-2 px-0 bg-dark border-1 rounded-top border text-white border-dark my-2'
@@ -188,7 +199,7 @@ const BirdsInformation = () => {
           </section>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

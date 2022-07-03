@@ -3,11 +3,21 @@ import { useNavigate } from 'react-router-dom'
 import h1 from '../images/h1.jpg'
 import h2 from '../images/h2.jpg'
 import h3 from '../images/h3.jpg'
-
+import { motion } from 'framer-motion/dist/framer-motion'
 const Home = () => {
   let navigate = useNavigate()
   return (
-    <div className='container col px-0'>
+    <motion.div
+      Style='min-height: 100vh'
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='container col px-0'
+    >
       <div
         id='carouselExampleCaptions'
         className='carousel slide carousel-fade row'
@@ -131,7 +141,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

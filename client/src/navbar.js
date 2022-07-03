@@ -4,7 +4,7 @@ import { PeopleIcon } from '@primer/octicons-react'
 
 import './index.css'
 const Navbar = (props) => {
-  console.log("User = " + localStorage.getItem('emailID'))
+  console.log('User = ' + localStorage.getItem('emailID'))
   let navigate = useNavigate()
   return (
     <div>
@@ -28,7 +28,7 @@ const Navbar = (props) => {
             className=' collapse navbar-collapse'
             id='navbarSupportedContent'
           >
-            <ul className='navbar-nav me-auto mb-2 mb-lg-0' >
+            <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
               <li className='nav-item '>
                 <Link className='nav-link' aria-current='page' to='/'>
                   Home
@@ -45,7 +45,7 @@ const Navbar = (props) => {
                 </Link>
               </li>
               <li className='nav-item'>
-                <Link className='nav-link' to='/'>
+                <Link className='nav-link' to='/findMyBird'>
                   Find My Bird
                 </Link>
               </li>
@@ -79,16 +79,16 @@ const Navbar = (props) => {
                   </button>
                 </div>
               ) : (
-                  <button
-                    className='btn btn-outline-dark mx-2'
-                    type='submit'
-                    onClick={() => {
-                      navigate('/adminSignIn')
-                    }}
-                  >
-                    <PeopleIcon size='medium' />
-                  </button>
-                )}
+                <button
+                  className='btn btn-outline-dark mx-2'
+                  type='submit'
+                  onClick={() => {
+                    navigate('/adminSignIn')
+                  }}
+                >
+                  <PeopleIcon size='medium' />
+                </button>
+              )}
             </form>
           </div>
         </div>

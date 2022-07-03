@@ -3,12 +3,21 @@ import useApi from '../../hooks/useApi'
 import { TrashIcon } from '@primer/octicons-react'
 import Loading from '../../loading'
 import axios from 'axios'
-
+import { motion } from 'framer-motion/dist/framer-motion'
 const RemoveBird = () => {
   const { data: birds, loading } = useApi('/BirdsInformation/read')
   if (loading) return <Loading />
   return (
-    <div className='container'>
+    <motion.div
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='container'
+    >
       <h1 className='text-center'>BIRD LIST - BIRD INFORMATION</h1>
       <table className='table'>
         <thead>
@@ -86,7 +95,7 @@ const RemoveBird = () => {
           )
         })}
       </section> */}
-    </div>
+    </motion.div>
   )
 }
 export default RemoveBird

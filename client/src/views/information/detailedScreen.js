@@ -3,7 +3,7 @@ import React from 'react'
 import '../../index.css'
 import useApi from '../../hooks/useApi'
 import Loading from '../../loading'
-
+import { motion } from 'framer-motion/dist/framer-motion'
 const DetailedScreen = () => {
   let { name } = useParams()
   const { data: bird, loading } = useApi('/BirdsInformation/read/' + name)
@@ -11,7 +11,17 @@ const DetailedScreen = () => {
   if (loading) return <Loading />
 
   return (
-    <div className='container'>
+    <motion.div
+      Style='min-height: 100vh'
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='container'
+    >
       <div className='justify-content-md-center text-center py-4'>
         <div className='col text-white mb-4'>
           <h1 className='fs-1 fw-bold text-dark text-uppercase'>
@@ -57,7 +67,7 @@ const DetailedScreen = () => {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

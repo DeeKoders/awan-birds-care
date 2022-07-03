@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import donorimg from '../../images/donor.jpg'
 import needyimg from '../../images/needy.jpg'
 import { motion } from 'framer-motion/dist/framer-motion'
-const Donations = () => {
+const FindMyBird = () => {
   let navigate = useNavigate()
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -180 }}
@@ -27,12 +28,12 @@ const Donations = () => {
                 src={donorimg}
                 alt=''
               />
-              <p className='fs-4 fw-light'>I'M the DONOR</p>
+              <p className='fs-4 fw-light'>Found a lost Bird??</p>
               <button
-                onClick={() => navigate('/donations/donor')}
+                onClick={() => navigate('/findMyBird/report')}
                 className='btn btn-outline-dark'
               >
-                Click Here
+                Report Here
               </button>
             </div>
           </div>
@@ -46,12 +47,12 @@ const Donations = () => {
                 src={needyimg}
                 alt=''
               />
-              <p className='fs-4 fw-light'>I NEED HELPING HAND</p>
+              <p className='fs-4 fw-light'>Lost Your Bird??</p>
               <button
-                onClick={() => navigate('/donations/needy')}
+                onClick={() => navigate('/findMyBird/find')}
                 className='btn btn-outline-dark'
               >
-                Click Here
+                Search Here
               </button>
             </div>
           </div>
@@ -60,4 +61,4 @@ const Donations = () => {
     </motion.div>
   )
 }
-export default Donations
+export default FindMyBird

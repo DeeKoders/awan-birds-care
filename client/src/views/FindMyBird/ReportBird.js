@@ -1,13 +1,11 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion/dist/framer-motion'
-const AddBird = () => {
+const ReportBird = () => {
   const [name, setName] = useState('')
-  const [temp, setTemp] = useState('')
   const [size, setSize] = useState('')
-  const [food, setFood] = useState('')
   const [type, setType] = useState('')
-  const [details, setDetails] = useState('')
+  const [color, setColor] = useState('')
   const [image, setImage] = useState([])
 
   const onChangeFile = (e) => {
@@ -17,16 +15,14 @@ const AddBird = () => {
     e.preventDefault()
     const formData = new FormData()
     formData.append('birdName', name)
-    formData.append('birdTemp', temp)
-    formData.append('birdFood', food)
     formData.append('birdType', type)
-    formData.append('birdDetails', details)
+    formData.append('birdColor', color)
     formData.append('birdSize', size)
     formData.append('imageBird', image)
     axios
-      .post('http://localhost:3001/BirdsInformation/insert', formData)
+      .post('http://localhost:3001/findMyBird/insert', formData)
       .catch((err) => {})
-    window.location = '/adminDashboard/addBirds'
+    window.location = '/findMyBird'
   }
 
   return (
@@ -41,7 +37,7 @@ const AddBird = () => {
       className='container '
     >
       <h1 className='fs-1 fw-bold row justify-content-center my-3 mb-5'>
-        Add Birds to Database
+        Fill this form to report a lost bird you found !!
       </h1>
       <form
         className='row g-3 mb-3 bg-white bg-opacity-75 py-4 mx-5 px-5 border border-dark'
@@ -64,11 +60,11 @@ const AddBird = () => {
         </div>
         <div className='col-md-6'>
           <label for='birdSize' className='form-label'>
-            Bird Size
+            Bird Age
           </label>
           <input
             type='text'
-            placeholder='Enter Average Size of Bird'
+            placeholder='Enter Average Age of Bird (Adult or Young)'
             onChange={(e) => {
               setSize(e.target.value)
             }}
@@ -76,32 +72,19 @@ const AddBird = () => {
             id='birdSize'
           />
         </div>
-        <div className='col-6'>
-          <label for='temprature' className='form-label'>
-            Temprature
-          </label>
-          <input
-            type='text'
-            className='form-control'
-            onChange={(e) => {
-              setTemp(e.target.value)
-            }}
-            id='temprature'
-            placeholder='Enter Temprature needed to survive: '
-          />
-        </div>
+
         <div className='col-md-6'>
-          <label for='food' className='form-label'>
-            Food
+          <label for='color' className='form-label'>
+            Color
           </label>
           <input
             type='text'
             className='form-control'
             onChange={(e) => {
-              setFood(e.target.value)
+              setColor(e.target.value)
             }}
-            id='food'
-            placeholder="Enter Bird's Required Food"
+            id='color'
+            placeholder='Enter Color of the Bird'
           />
         </div>
         <div className='col-md-6'>
@@ -118,21 +101,7 @@ const AddBird = () => {
             placeholder="Enter Bird's Type"
           />
         </div>
-        <div className='col-12'>
-          <label for='details' className='form-label'>
-            Details
-          </label>
-          <br />
-          <textarea
-            rows='7'
-            className='col-md-12 col-sm-auto'
-            onChange={(e) => {
-              setDetails(e.target.value)
-            }}
-            placeholder='Enter Brief Detail of Bird'
-            id='message'
-          />
-        </div>
+
         <div className='col-md-6'>
           <h1>Image</h1>
           <input
@@ -143,21 +112,10 @@ const AddBird = () => {
           />
         </div>
         <br />
-        <div className='col-12'>
-          <div className='form-check'>
-            <input
-              className='form-check-input'
-              type='checkbox'
-              id='gridCheck'
-            />
-            <label className='form-check-label' for='gridCheck'>
-              Are You Sure that the above Information is Correct?
-            </label>
-          </div>
-        </div>
+
         <div className='col-12'>
           <button type='submit' className='btn btn-primary'>
-            Add Bird
+            Report Bird
           </button>
         </div>
       </form>
@@ -165,4 +123,4 @@ const AddBird = () => {
   )
 }
 
-export default AddBird
+export default ReportBird

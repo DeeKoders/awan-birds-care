@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import { motion } from 'framer-motion/dist/framer-motion'
-const Bird = (props) => {
+const Card = (props) => {
   let navigate = useNavigate()
   console.log(props)
   return (
@@ -15,7 +15,6 @@ const Bird = (props) => {
       }}
       className='col-md-4 col-sm-6 bg-light bg-opacity-75  card '
       Style='border-radius:5px'
-      onClick={() => navigate('/BirdsInformation/details/' + props._id)}
     >
       <div className='pt-2' Style='position:relative'>
         <span
@@ -34,7 +33,12 @@ const Bird = (props) => {
       </div>
       <div className='card-body'>
         <h5 className='card-title'>{props.birdName}</h5>
-        <p className='card-text text-truncate'>{props.details}</p>
+        <p className='card-text text-truncate text-uppercase'>
+          Color: {props.size}
+        </p>
+        <p className='card-text text-truncate text-uppercase'>
+          Size: {props.color}
+        </p>
         <button
           type='button'
           className='btn btn-outline-secondary'
@@ -47,4 +51,4 @@ const Bird = (props) => {
   )
 }
 
-export default Bird
+export default Card

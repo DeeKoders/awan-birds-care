@@ -3,12 +3,21 @@ import useApi from '../../hooks/useApi'
 import { TrashIcon } from '@primer/octicons-react'
 import Loading from '../../loading'
 import axios from 'axios'
-
+import { motion } from 'framer-motion/dist/framer-motion'
 const RemoveSell = () => {
   const { data: birds, loading } = useApi('/BuySell/read')
   if (loading) return <Loading />
   return (
-    <div className='container text-center'>
+    <motion.div
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='container text-center'
+    >
       <h1 className='text-center'>BIRD LIST - BUY SELL</h1>
       <table className='table'>
         <thead>
@@ -86,7 +95,7 @@ const RemoveSell = () => {
           )
         })}
       </section> */}
-    </div>
+    </motion.div>
   )
 }
 export default RemoveSell

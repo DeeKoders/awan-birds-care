@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-
+import { motion } from 'framer-motion/dist/framer-motion'
 const AddSell = () => {
   const [name, setName] = useState('')
   const [sellerName, setSellerName] = useState('')
@@ -35,7 +35,16 @@ const AddSell = () => {
   }
 
   return (
-    <div className='container '>
+    <motion.div
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='container '
+    >
       <h1 className='fs-1 fw-bold row justify-content-center my-3 mb-5'>
         Add Birds to Database
       </h1>
@@ -186,7 +195,7 @@ const AddSell = () => {
           </button>
         </div>
       </form>
-    </div>
+    </motion.div>
   )
 }
 

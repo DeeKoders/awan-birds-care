@@ -2,7 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { motion } from 'framer-motion/dist/framer-motion'
 const SignUp = () => {
   const [data, setData] = useState({
     firstName: '',
@@ -42,7 +42,16 @@ const SignUp = () => {
   }
 
   return (
-    <div className='App text-center gap-4 '>
+    <motion.div
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='App text-center gap-4 '
+    >
       <main className='form-signin container border border-1 border-secondary bg-white bg-opacity-50 py-4 px-4'>
         <form>
           <h1>Awan Birds Care</h1>
@@ -125,7 +134,7 @@ const SignUp = () => {
           <p className='mt-5 mb-3 text-muted'>© 2021 – 2022</p>
         </form>
       </main>
-    </div>
+    </motion.div>
   )
 }
 

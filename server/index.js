@@ -12,6 +12,7 @@ const authRoutes = require('./routes/auth')
 const informationRoutes = require('./routes/information')
 const BuySellRoutes = require('./routes/buysell')
 const donorRoutes = require('./routes/donor')
+const findRoutes = require('./routes/findMyBird')
 // const deleteRoutes = require('./routes/delete')
 const { v4: uuid } = require('uuid')
 
@@ -29,6 +30,7 @@ app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/BuySell', BuySellRoutes)
 app.use('/Donors', donorRoutes)
+app.use('/findMyBird', findRoutes)
 
 const db =
   'mongodb+srv://DeeKoders:deekay0312@abc.i8xwk.mongodb.net/awan-birds-care?retryWrites=true&w=majority'

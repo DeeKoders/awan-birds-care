@@ -3,12 +3,26 @@ import useApi from '../../hooks/useApi'
 import { CheckCircleIcon, TrashIcon } from '@primer/octicons-react'
 import Loading from '../../loading'
 import axios from 'axios'
-
+import { motion } from 'framer-motion/dist/framer-motion'
 function PendingDonor() {
-    const { data: donors, loading,setData, setLoading } = useApi('/Donors/readPending')
-    if (loading) return <Loading />
+  const {
+    data: donors,
+    loading,
+    setData,
+    setLoading,
+  } = useApi('/Donors/readPending')
+  if (loading) return <Loading />
   return (
-    <div className='container'>
+    <motion.div
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='container'
+    >
       <h1 className='text-center'>Pending Donor Requests</h1>
       <table className='table'>
         <thead>
@@ -36,11 +50,11 @@ function PendingDonor() {
                     className='btn btn-outline-dark border  '
                     type='submit'
                     onClick={async () => {
-                      axios.put(
-                        'http://localhost:3001/Donors/approve/' + b._id
-                      )
+                      axios.put('http://localhost:3001/Donors/approve/' + b._id)
                       setLoading(true)
-                      const res = await axios.get('http://localhost:3001/Donors/readPending')
+                      const res = await axios.get(
+                        'http://localhost:3001/Donors/readPending'
+                      )
                       setData(res.data)
                       console.log('=====================================')
                       console.log(donors)
@@ -57,8 +71,7 @@ function PendingDonor() {
           })}
         </tbody>
       </table>
-      
-    </div>
+    </motion.div>
   )
 }
 

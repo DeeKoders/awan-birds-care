@@ -1,20 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useApi from '../../hooks/useApi'
 import Loading from '../../loading'
 import importImg from '../../images/image_logo.png'
 import SellBird from './SellBird'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion/dist/framer-motion'
+import axios from '../../api/client'
+
 const Sell = () => {
-  const { data: birds, loading } = useApi('/BuySell/read')
+  const { data: birds, loading, setLoading, setData } = useApi('/BuySell/read')
+  const [currentFilter, setCurrentFilter] = useState('None')
   let navigate = useNavigate()
   if (loading) return <Loading />
   console.log(birds)
 
+  const handleFilter = async (e) => {
+    setCurrentFilter(e.currentTarget.value)
+    const filter = e.currentTarget.value
+    setLoading(true)
+    const res = await axios.get('/BirdsInformation/readBySize/' + filter)
+    setData(res.data)
+    setLoading(false)
+  }
+
   return (
-    <div className='row container-fluid'>
-      <div className='col-md-2 bg-white border-1 rounded-top border border-dark'>
+    <motion.div
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='row container-fluid'
+    >
+      <div
+        id='sidebar'
+        className='text-center col-md-2 px-0 bg-dark border-1 rounded-top border text-white border-dark my-2'
+        Style='min-height:100vh'
+      >
         <div className='px-4 py-2 '>
-          <h2 className='fs-4 pb-2 text-uppercase border-dark border-bottom fw-bold text-center'>
+          <h2 className='fs-4 pb-2  border-white border-bottom fw-bold text-center'>
             Result Filters
           </h2>
 
@@ -24,7 +50,7 @@ const Sell = () => {
             </div>
             <div class=' row dropdown'>
               <button
-                class='border border-dark  btn dropdown-toggle'
+                class='border border-white text-white btn dropdown-toggle'
                 type='button'
                 id='dropdownMenuButton1'
                 data-bs-toggle='dropdown'
@@ -32,7 +58,11 @@ const Sell = () => {
               >
                 Select Category
               </button>
-              <ul class='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
+              <ul
+                class='dropdown-menu'
+                id='drop'
+                aria-labelledby='dropdownMenuButton1'
+              >
                 <li>
                   <a class='dropdown-item' href='#'>
                     Action
@@ -59,43 +89,58 @@ const Sell = () => {
             <div class='form-check'>
               <input
                 class='form-check-input'
-                type='checkbox'
-                value=''
-                id='flexCheckDefault'
+                type='radio'
+                name='Size'
+                value='Small'
+                checked={currentFilter === 'Small'}
+                onChange={handleFilter}
+                id='small'
               />
-              <label class='form-check-label' for='flexCheckDefault'>
+              <label class='form-check-label' for='small'>
                 Small Size Birds
               </label>
             </div>
             <div class='form-check'>
               <input
                 class='form-check-input'
-                type='checkbox'
-                value=''
-                id='flexCheckChecked'
+                type='radio'
+                value='Medium'
+                id='medium'
+                checked={currentFilter === 'Medium'}
+                onChange={handleFilter}
               />
-              <label class='form-check-label' for='flexCheckChecked'>
+              <label class='form-check-label' for='medium'>
                 Medium Size Birds
               </label>
             </div>
             <div class='form-check'>
               <input
                 class='form-check-input'
-                type='checkbox'
-                value=''
-                id='flexCheckChecked'
+                type='radio'
+                value='Large'
+                id='large'
+                checked={currentFilter === 'Large'}
+                onChange={handleFilter}
               />
-              <label class='form-check-label' for='flexCheckChecked'>
+              <label class='form-check-label' for='large'>
                 Large Size Birds
               </label>
             </div>
           </div>
           <hr />
-          <button className='btn btn-dark mx-5' type='submit'>
-            Apply Filter
+          <button
+            className='btn btn-outline-light mx-4'
+            type='submit'
+            onClick={async () => {
+              setCurrentFilter('None')
+              const res = await axios.get('/BirdsInformation/read')
+              setData(res.data)
+            }}
+          >
+            Remove Filter
           </button>
 
-          <div class='crop ' Style='margin-top:100px'>
+          <div class='crop ' Style='margin-top:60px'>
             <img src={importImg} alt='Donald Duck' />
           </div>
           <div className='row text-center'>
@@ -146,7 +191,7 @@ const Sell = () => {
           </section>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

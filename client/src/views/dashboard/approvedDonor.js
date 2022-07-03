@@ -3,12 +3,26 @@ import useApi from '../../hooks/useApi'
 import { CheckCircleIcon, TrashIcon } from '@primer/octicons-react'
 import Loading from '../../loading'
 import axios from 'axios'
-
+import { motion } from 'framer-motion/dist/framer-motion'
 function ApprovedDonor() {
-    const { data: donors, loading,setData, setLoading } = useApi('/Donors/readApproved')
-    if (loading) return <Loading />
+  const {
+    data: donors,
+    loading,
+    setData,
+    setLoading,
+  } = useApi('/Donors/readApproved')
+  if (loading) return <Loading />
   return (
-    <div className='container'>
+    <motion.div
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='container'
+    >
       <h1 className='text-center'>Approved Donors</h1>
       <table className='table'>
         <thead>
@@ -35,9 +49,7 @@ function ApprovedDonor() {
                     Style=''
                     className='btn btn-outline-dark border  '
                     type='submit'
-                    onClick={async () => {
-                      
-                    }}
+                    onClick={async () => {}}
                   >
                     <CheckCircleIcon size={26} />
                   </button>
@@ -47,8 +59,7 @@ function ApprovedDonor() {
           })}
         </tbody>
       </table>
-      
-    </div>
+    </motion.div>
   )
 }
 

@@ -1,12 +1,21 @@
 import React from 'react'
-
+import { motion } from 'framer-motion/dist/framer-motion'
 function Needy() {
   const changeOnClick = (e) => {
     e.preventDefault()
     console.log(document.getElementById('inputState').value)
   }
   return (
-    <div className='container '>
+    <motion.div
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='container '
+    >
       <h1 className='fs-1 fw-bold row justify-content-center my-3 mb-5'>
         You Need a helping hand to grow your business??
       </h1>
@@ -149,7 +158,7 @@ function Needy() {
           </button>
         </div>
       </form>
-    </div>
+    </motion.div>
   )
 }
 

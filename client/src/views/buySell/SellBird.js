@@ -1,9 +1,18 @@
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion/dist/framer-motion'
+
 import React from 'react'
 const SellBird = (props) => {
   let navigate = useNavigate()
   return (
-    <article
+    <motion.article
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
       className='col-md-4 col-sm-6 bg-light bg-opacity-75  card '
       Style='border-radius:5px'
       onClick={() => navigate('/BuySell/details/' + props._id)}
@@ -26,7 +35,7 @@ const SellBird = (props) => {
           </p>
         </div>
       </div>
-    </article>
+    </motion.article>
   )
 }
 

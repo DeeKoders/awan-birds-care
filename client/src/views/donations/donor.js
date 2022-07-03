@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-
+import { motion } from 'framer-motion/dist/framer-motion'
 const Donor = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -11,8 +11,7 @@ const Donor = () => {
   const [zip, setZip] = useState('')
   const [approve, setApprove] = useState('false')
 
-
-  const submitDonor = (e) =>{
+  const submitDonor = (e) => {
     e.preventDefault()
     setApprove('false')
 
@@ -24,24 +23,32 @@ const Donor = () => {
       phno,
       address,
       zip,
-      approve
+      approve,
     }
 
-    axios
-      .post('http://localhost:3001/Donors/insert', data)
-      .catch((err) => {})
+    axios.post('http://localhost:3001/Donors/insert', data).catch((err) => {})
 
     alert(name)
     window.location = '/donations/donor'
-    
-
   }
   return (
-    <div className='container '>
+    <motion.div
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='container '
+    >
       <h1 className='fs-1 fw-bold row justify-content-center my-3 mb-5'>
         Donor Registration
       </h1>
-      <form onSubmit={submitDonor} className='row g-3 mb-3 bg-white bg-opacity-75 py-4 mx-5 px-5 border border-dark'>
+      <form
+        onSubmit={submitDonor}
+        className='row g-3 mb-3 bg-white bg-opacity-75 py-4 mx-5 px-5 border border-dark'
+      >
         <div className='col-md-6'>
           <label htmlFor='inputEmail' className='form-label'>
             Email
@@ -88,19 +95,23 @@ const Donor = () => {
           <label htmlFor='inputCity' className='form-label'>
             City
           </label>
-          <input type='text' onChange={(e) => {
+          <input
+            type='text'
+            onChange={(e) => {
               setCity(e.target.value)
             }}
-            className='form-control' id='inputCity' />
+            className='form-control'
+            id='inputCity'
+          />
         </div>
         <div className='col-12'>
           <label htmlFor='inputAddress' className='form-label'>
             Address
           </label>
           <input
-          onChange={(e) => {
-            setAddress(e.target.value)
-          }}
+            onChange={(e) => {
+              setAddress(e.target.value)
+            }}
             type='text'
             className='form-control'
             id='inputAddress'
@@ -112,9 +123,13 @@ const Donor = () => {
           <label htmlFor='inputState' className='form-label'>
             State
           </label>
-          <select id='inputState' onChange={(e) => {
-            setState(e.target.value)
-          }} className='form-select'>
+          <select
+            id='inputState'
+            onChange={(e) => {
+              setState(e.target.value)
+            }}
+            className='form-select'
+          >
             <option selected>None</option>
             <option value='Balochistan'>Balochistan</option>
             <option value='Khyber Pakhtunkhwa'>Khyber Pakhtunkhwa</option>
@@ -126,9 +141,14 @@ const Donor = () => {
           <label htmlFor='inputZip' className='form-label'>
             Zip
           </label>
-          <input type='text' onChange={(e) => {
-            setZip(e.target.value)
-          }} className='form-control' id='inputZip' />
+          <input
+            type='text'
+            onChange={(e) => {
+              setZip(e.target.value)
+            }}
+            className='form-control'
+            id='inputZip'
+          />
         </div>
         <div className='col-12'>
           <div className='form-check'>
@@ -148,7 +168,7 @@ const Donor = () => {
           </button>
         </div>
       </form>
-    </div>
+    </motion.div>
   )
 }
 

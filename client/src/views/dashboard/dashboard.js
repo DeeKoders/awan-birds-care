@@ -1,10 +1,21 @@
 import { PlusCircleIcon, LogIcon } from '@primer/octicons-react'
 import { Link } from 'react-router-dom'
 import React from 'react'
-console.log(localStorage.getItem("emailID"))
+import { motion } from 'framer-motion/dist/framer-motion'
+
+console.log(localStorage.getItem('emailID'))
 const Dashboard = () => {
   return (
-    <div className='container-fluid my-3'>
+    <motion.div
+      initial={{ opacity: 0, y: -180 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 0.6,
+      }}
+      className='container-fluid my-3'
+    >
       <div className='row'>
         <nav
           id='sidebarMenu'
@@ -43,7 +54,10 @@ const Dashboard = () => {
               </li>
               <hr />
               <li className='nav-item'>
-                <Link className='nav-link text-dark fw-bold' to='/adminDashboard/removeSell'>
+                <Link
+                  className='nav-link text-dark fw-bold'
+                  to='/adminDashboard/removeSell'
+                >
                   <PlusCircleIcon className='mx-2' size={20} />
                   Remove Bird - Buy/Sell
                 </Link>
@@ -55,14 +69,20 @@ const Dashboard = () => {
             </h1>
             <ul className='nav flex-column'>
               <li className='nav-item'>
-                <Link className='nav-link text-dark fw-bold' to='/adminDashboard/pendingDonor'>
+                <Link
+                  className='nav-link text-dark fw-bold'
+                  to='/adminDashboard/pendingDonor'
+                >
                   <LogIcon size={20} className='mx-2' />
                   Donor's Pending Request
                 </Link>
               </li>
               <hr />
               <li className='nav-item'>
-                <Link className='nav-link text-dark fw-bold' to='/adminDashboard/approvedDonor'>
+                <Link
+                  className='nav-link text-dark fw-bold'
+                  to='/adminDashboard/approvedDonor'
+                >
                   <LogIcon size={20} className='mx-2' />
                   Approved Donors
                 </Link>
@@ -139,7 +159,7 @@ const Dashboard = () => {
           </div>
         </main>
       </div>
-    </div>
+    </motion.div>
   )
 }
 export default Dashboard
