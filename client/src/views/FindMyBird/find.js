@@ -42,7 +42,7 @@ function Find() {
 
         <div className='col-12 py-2 text-center'>
           <button Style='width: 30%' type='submit' className='btn btn-primary'>
-            Sign in
+            Find By Name
           </button>
         </div>
       </form>

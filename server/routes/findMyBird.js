@@ -61,6 +61,16 @@ app.get('/readBySize/:size', async (req, res) => {
     res.send(result)
   })
 })
+app.get('/readByColor/:color', async (req, res) => {
+  const color = req.params.size
+  FindModel.find({ color: color }, (err, result) => {
+    if (err) {
+      res.send(err)
+    }
+
+    res.send(result)
+  })
+})
 app.post('/insert', upload.single('imageBird'), async (req, res) => {
   const birdName = req.body.birdName
   const size = req.body.birdSize
