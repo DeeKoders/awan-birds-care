@@ -52,9 +52,24 @@ const Home = () => {
             <div className='carousel-caption d-none d-md-block'>
               <h2>Welcome to Awan Birds Care!!</h2>
               <p>Its time to become aware of Birds Care !!</p>
-              <button className='btn btn-primary'>Information</button>
-              <button className='btn btn-success'>Buy/Sell</button>
-              <button className='btn btn-danger'>Donations</button>
+              <button
+                onClick={() => navigate('/BirdsInformation')}
+                className='btn btn-primary'
+              >
+                Information
+              </button>
+              <button
+                onClick={() => navigate('/BirdSell')}
+                className='btn btn-success'
+              >
+                Buy/Sell
+              </button>
+              <button
+                onClick={() => navigate('/donations')}
+                className='btn btn-danger'
+              >
+                Donations
+              </button>
             </div>
           </div>
           <div className='carousel-item'>
@@ -62,9 +77,24 @@ const Home = () => {
             <div className='carousel-caption d-none d-md-block'>
               <h2>Welcome to Awan Birds Care!!</h2>
               <p>Its time to become aware of Birds Care !!</p>
-              <button className='btn btn-primary'>Information</button>
-              <button className='btn btn-success'>Buy/Sell</button>
-              <button className='btn btn-danger'>Donations</button>
+              <button
+                onClick={() => navigate('/BirdsInformation')}
+                className='btn btn-primary'
+              >
+                Information
+              </button>
+              <button
+                onClick={() => navigate('/BirdSell')}
+                className='btn btn-success'
+              >
+                Buy/Sell
+              </button>
+              <button
+                onClick={() => navigate('/donations')}
+                className='btn btn-danger'
+              >
+                Donations
+              </button>
             </div>
           </div>
           <div className='carousel-item'>
@@ -72,9 +102,24 @@ const Home = () => {
             <div className='carousel-caption d-none d-md-block'>
               <h2>Welcome to Awan Birds Care!!</h2>
               <p>Its time to become aware of Birds Care !!</p>
-              <button className='btn btn-primary'>Information</button>
-              <button className='btn btn-success'>Buy/Sell</button>
-              <button className='btn btn-danger'>Donations</button>
+              <button
+                onClick={() => navigate('/BirdsInformation')}
+                className='btn btn-primary'
+              >
+                Information
+              </button>
+              <button
+                onClick={() => navigate('/BirdSell')}
+                className='btn btn-success'
+              >
+                Buy/Sell
+              </button>
+              <button
+                onClick={() => navigate('/donations')}
+                className='btn btn-danger'
+              >
+                Donations
+              </button>
             </div>
           </div>
         </div>
