@@ -74,6 +74,7 @@ function AnimatedRoutes() {
       />
     </Routes>
   )
+  
 }
 
 export default AnimatedRoutes
