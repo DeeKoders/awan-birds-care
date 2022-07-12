@@ -14,9 +14,16 @@ const SellBird = (props) => {
         delay: 0.6,
       }}
       className='col-md-4 col-sm-6 bg-light bg-opacity-75  card '
-      Style='border-radius:5px'
+      Style='border-radius: 5px; position: relative'
       onClick={() => navigate('/BuySell/details/' + props._id)}
     >
+      <span
+        class='mx-2 my-2 badge bg-primary text-uppercase'
+        Style='position:absolute'
+      >
+        {' '}
+        {props.type}
+      </span>
       <img
         src={'http://localhost:3001/Images/' + props.image}
         className='card-img-top mt-2 img-thumbnail'

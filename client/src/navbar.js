@@ -62,7 +62,9 @@ const Navbar = (props) => {
                     className='btn btn-dark mx-2'
                     type='submit'
                     onClick={() => {
-                      navigate('/adminDashboard')
+                      localStorage.getItem('token') != null
+                        ? navigate('/adminDashboard')
+                        : navigate('/error')
                     }}
                   >
                     Portal

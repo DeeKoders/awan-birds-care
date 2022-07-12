@@ -21,10 +21,12 @@ import FindMyBird from '../views/FindMyBird/FindMyBird'
 import Find from './FindMyBird/find'
 import FoundBirds from './FindMyBird/FoundBirds'
 import ReportBird from './FindMyBird/ReportBird'
+import Error from './error'
 function AnimatedRoutes() {
   const user = localStorage.getItem('token')
   return (
     <Routes>
+      {!user && <Route exact path='/error' element={<Error />} />}
       {user && <Route exact path='/adminDashboard' element={<Dashboard />} />}
       <Route exact path='/BirdsInformation' element={<BirdsInformation />} />
       <Route exact path='/BirdSell' element={<Sell />} />
@@ -74,7 +76,6 @@ function AnimatedRoutes() {
       />
     </Routes>
   )
-  
 }
 
 export default AnimatedRoutes

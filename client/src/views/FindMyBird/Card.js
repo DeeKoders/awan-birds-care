@@ -34,10 +34,10 @@ const Card = (props) => {
       <div className='card-body'>
         <h5 className='card-title'>{props.birdName}</h5>
         <p className='card-text text-truncate text-uppercase'>
-          Color: {props.size}
+          Color: {props.color}
         </p>
         <p className='card-text text-truncate text-uppercase'>
-          Size: {props.color}
+          Size: {props.size}
         </p>
         <button
           type='button'
