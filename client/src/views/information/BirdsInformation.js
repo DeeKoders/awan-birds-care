@@ -55,38 +55,18 @@ const BirdsInformation = () => {
             <div className='row fw-bold '>
               <div className='col fs-5 mb-2'>Category</div>
             </div>
-            <div class=' row dropdown'>
-              <button
-                class='border border-white text-white btn dropdown-toggle'
-                type='button'
-                id='dropdownMenuButton1'
-                data-bs-toggle='dropdown'
-                aria-expanded='false'
-              >
-                Select Category
-              </button>
-              <ul
-                class='dropdown-menu'
-                id='drop'
-                aria-labelledby='dropdownMenuButton1'
-              >
-                <li>
-                  <a class='dropdown-item' href='#'>
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a class='dropdown-item' href='#'>
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a class='dropdown-item' href='#'>
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <select
+              onChange={(e) => {
+                console.log(e.target.value)
+              }}
+              class='form-select'
+              aria-label='Default select example'
+            >
+              <option selected>No Category</option>
+              <option value='Parrots'>Parrots</option>
+              <option value='Chickens'>Chickens</option>
+              <option value='Sparrows'>Sparrows</option>
+            </select>
           </div>
           <hr />
           <div className='row '>
