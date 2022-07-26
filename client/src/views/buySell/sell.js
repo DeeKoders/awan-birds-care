@@ -10,6 +10,7 @@ import axios from '../../api/client'
 const Sell = () => {
   const { data: birds, loading, setLoading, setData } = useApi('/BuySell/read')
   const [currentFilter, setCurrentFilter] = useState('None')
+  const [currentCategory, setCurrentCategory] = useState('No Category')
   let navigate = useNavigate()
   if (loading) return <Loading />
   console.log(birds)
@@ -18,7 +19,7 @@ const Sell = () => {
     setCurrentFilter(e.currentTarget.value)
     const filter = e.currentTarget.value
     setLoading(true)
-    const res = await axios.get('/BirdsInformation/readBySize/' + filter)
+    const res = await axios.get('/BuySell/readBySize/' + filter)
     setData(res.data)
     setLoading(false)
   }
@@ -48,38 +49,32 @@ const Sell = () => {
             <div className='row fw-bold '>
               <div className='col fs-5 mb-2'>Category</div>
             </div>
-            <div class=' row dropdown'>
-              <button
-                class='border border-white text-white btn dropdown-toggle'
-                type='button'
-                id='dropdownMenuButton1'
-                data-bs-toggle='dropdown'
-                aria-expanded='false'
-              >
-                Select Category
-              </button>
-              <ul
-                class='dropdown-menu'
-                id='drop'
-                aria-labelledby='dropdownMenuButton1'
-              >
-                <li>
-                  <a class='dropdown-item' href='#'>
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a class='dropdown-item' href='#'>
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a class='dropdown-item' href='#'>
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <select
+              onChange={async (e) => {
+                setCurrentCategory(e.target.value)
+                const filter = e.target.value
+                setLoading(true)
+                console.log(e.target.value)
+                const res = await axios.get('/BuySell/readByCategory/' + filter)
+                setData(res.data)
+                setLoading(false)
+              }}
+              class='form-select'
+              aria-label='Default select example'
+            >
+              <option selected={currentCategory === 'No Category'}>
+                No Category
+              </option>
+              <option selected={currentCategory === 'Parrot'} value='Parrot'>
+                Parrots
+              </option>
+              <option selected={currentCategory === 'Chicken'} value='Chicken'>
+                Chickens
+              </option>
+              <option selected={currentCategory === 'Sparrow'} value='Sparrow'>
+                Sparrows
+              </option>
+            </select>
           </div>
           <hr />
           <div className='row '>

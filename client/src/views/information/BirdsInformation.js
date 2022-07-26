@@ -14,6 +14,7 @@ const BirdsInformation = () => {
     setData,
     setLoading,
   } = useApi('/BirdsInformation/read')
+  const [currentCategory, setCurrentCategory] = useState('No Category')
   const [filtered, setFiltered] = useState([])
   const [currentFilter, setCurrentFilter] = useState('None')
   let navigate = useNavigate()
@@ -56,16 +57,32 @@ const BirdsInformation = () => {
               <div className='col fs-5 mb-2'>Category</div>
             </div>
             <select
-              onChange={(e) => {
+              onChange={async (e) => {
+                setCurrentCategory(e.target.value)
+                const filter = e.target.value
+                setLoading(true)
                 console.log(e.target.value)
+                const res = await axios.get(
+                  '/BirdsInformation/readByCategory/' + filter
+                )
+                setData(res.data)
+                setLoading(false)
               }}
               class='form-select'
               aria-label='Default select example'
             >
-              <option selected>No Category</option>
-              <option value='Parrots'>Parrots</option>
-              <option value='Chickens'>Chickens</option>
-              <option value='Sparrows'>Sparrows</option>
+              <option selected={currentCategory === 'No Category'}>
+                No Category
+              </option>
+              <option selected={currentCategory === 'Parrot'} value='Parrot'>
+                Parrots
+              </option>
+              <option selected={currentCategory === 'Chicken'} value='Chicken'>
+                Chickens
+              </option>
+              <option selected={currentCategory === 'Sparrow'} value='Sparrow'>
+                Sparrows
+              </option>
             </select>
           </div>
           <hr />
@@ -119,6 +136,7 @@ const BirdsInformation = () => {
             className='btn btn-outline-light mx-4'
             type='submit'
             onClick={async () => {
+              setCurrentCategory('No Category')
               setCurrentFilter('None')
               const res = await axios.get('/BirdsInformation/read')
               setData(res.data)

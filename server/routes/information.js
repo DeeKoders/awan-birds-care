@@ -30,7 +30,17 @@ app.get('/read', async (req, res) => {
     res.send(result)
   })
 })
+app.get('/readByCategory/:name', async (req, res) => {
+  const name = req.params.name
+  console.log(name)
+  await BirdsModel.find({ type: name }, (err, result) => {
+    if (err) {
+      res.send(err)
+    }
 
+    res.send(result)
+  })
+})
 app.get('/readBySize/:name', async (req, res) => {
   const name = req.params.name
   console.log(name)
